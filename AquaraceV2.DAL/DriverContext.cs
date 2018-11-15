@@ -15,22 +15,19 @@ namespace AquaraceV2.DAL
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("@driver_id", driver_id));
-            string[] return_columns = { "driver_id", "driver_name", "paycheck", "team_id", "team_name"};
-            ArrayList driver_objects = ExecuteSelectProcedure("get_driver", parameters, 5, return_columns);
-            //foreach (object ob in driver_objects)
-            //{
-            //    Console.WriteLine(ob.ToString());
 
-            //}
-            //Console.ReadLine();
+
+            string[] return_columns = { "driver_id", "driver_name", "paycheck", "team_id", "team_name"};
+
+            List<object> driver_objects = ExecuteSelectProcedure("get_driver", parameters, 5, return_columns);
+
             int driverid = (int)driver_objects[0];
             string driver_name = driver_objects[1].ToString();
-            decimal paycheck = (decimal)driver_objects[2];
+            decimal paycheck = decimal.Parse(driver_objects[2].ToString());
             int team_id = (int)driver_objects[3];
             string team_name = driver_objects[4].ToString();
 
             return new Driver(driverid, driver_name, paycheck, team_id, team_name);
-            return null;
         }
 
     }
