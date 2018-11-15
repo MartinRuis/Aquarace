@@ -37,9 +37,9 @@ namespace AquaraceV2.DAL
             }
         }
 
-        public ArrayList ExecuteSelectProcedure(string procedure_name, List<SqlParameter> parameters, int object_amount, string[] return_columns)
+        public List<object> ExecuteSelectProcedure(string procedure_name, List<SqlParameter> parameters, int object_amount, string[] return_columns)
         {
-            ArrayList returnobject = new ArrayList();
+            List<object> returnobject = new List<object>();
             using (var conn = new SqlConnection(connectionString))
             {
                 using (var command = new SqlCommand(procedure_name, conn) { CommandType = CommandType.StoredProcedure })
@@ -54,19 +54,18 @@ namespace AquaraceV2.DAL
                         }
 
                         SqlDataReader reader = command.ExecuteReader();
-
-
-                        int i = 0;
+                    
                         while (reader.Read())
                         {
-                            returnobject.Add(reader[return_columns[i]]);
-                            i++;
-                        }
-                        
+                            for (int x = 0; x < object_amount; x++)
+                            {
+                                returnobject.Add(reader[return_columns[x]]);
+                            }                                                                              
+                        }                        
 
                         conn.Close();
                     }
-                    catch (SqlException) { }
+                    catch (Exception e) { Console.Write(e); }
                 }
             }
             return returnobject;
