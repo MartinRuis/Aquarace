@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Driver.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="GuessedDrivers.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Team.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

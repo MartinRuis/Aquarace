@@ -28,7 +28,12 @@ namespace AquaraceV2.DAL
             int team_id = (int)driver_objects[3];
             string team_name = driver_objects[4].ToString();
 
-            return new Driver(driverid, driver_name, paycheck, team_id, team_name);
+            return new Driver(driverid, driver_name, paycheck, null);
+        }
+
+        private Team getTeam(string driverID)
+        {
+            return null;
         }
 
     }

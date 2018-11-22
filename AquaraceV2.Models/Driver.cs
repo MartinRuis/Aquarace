@@ -8,24 +8,23 @@ namespace AquaraceV2.Models
 {
     public class Driver
     {
-        public int driver_id { get; private set; }
-        public string driver_name { get; private set; }
-        public decimal paycheck { get; private set; }
-        public int team_id { get; private set; }
-        public string team_name { get; private set; }
+        public int ID { get; private set; }
+        public string Name { get; private set; }
+        public decimal Paycheck { get; private set; }
+        public Team DriversTeam { get; private set; }
 
-        public Driver(int driver_id, string driver_name, decimal paycheck, int team_id, string team_name)
+        public Driver(int id, string name, decimal paycheck, Team team)
         {
-            this.driver_id = driver_id;
-            this.driver_name = driver_name;
-            this.paycheck = paycheck;
-            this.team_id = team_id;
-            this.team_name = team_name;
+            ID = id;
+            Name = name;
+            Paycheck = paycheck;
+            DriversTeam = team;
         }
 
         public override string ToString()
         {
-            return driver_name + ", " + team_name;
+            //return Name + ", " + team_name;
+            return ""; //TODO
         }
     }
 }
