@@ -14,7 +14,7 @@ namespace AquaraceV2.Logic
         {
             throw new NotImplementedException();
         }
-
+        //NOT FINISHED
         public void Create(List<Driver> drivers, int race_id, decimal wallet, int group_id, int player_id)
         {
             GuessContext gc = new GuessContext();
