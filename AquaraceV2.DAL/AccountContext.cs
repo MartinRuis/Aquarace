@@ -10,7 +10,7 @@ namespace AquaraceV2.DAL
 {
     public class AccountContext : SqlContext
     {
-        public void CreateAccount(string username, string password)
+        public void Create(string username, string password)
         {
             string salt = CreateSalt();
             string hashed_password = GenerateHash(password, salt);
