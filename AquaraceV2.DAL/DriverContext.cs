@@ -20,13 +20,8 @@ namespace AquaraceV2.DAL
             string[] return_columns = { "driver_id", "driver_name", "paycheck", "team_id", "team_name"};
 
             List<object> driver_objects = ExecuteSelectProcedure("get_driver", parameters, 5, return_columns);
-
-            return new Driver((int)driver_objects[0], driver_objects[1].ToString(), decimal.Parse(driver_objects[2].ToString()), getTeam((int)driver_objects[0]));
-        }
-
-        private Team getTeam(int driverID)
-        {
-            return null;
+            TeamContext tc = new TeamContext();
+            return new Driver((int)driver_objects[0], driver_objects[1].ToString(), decimal.Parse(driver_objects[2].ToString()), tc.GetTeam((int)driver_objects[0]));
         }
 
     }
