@@ -13,8 +13,10 @@ namespace AquaraceV2.DAL
     {
         public Driver GetDriver(int driver_id)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>();
-            parameters.Add(new SqlParameter("@driver_id", driver_id));
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@driver_id", driver_id)
+            };
 
             //TODO      team_id and team_name needs to be removed from the SP.
             string[] return_columns = { "driver_id", "driver_name", "paycheck", "team_id", "team_name"};
