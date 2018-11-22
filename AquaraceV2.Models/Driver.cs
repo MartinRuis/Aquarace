@@ -23,8 +23,7 @@ namespace AquaraceV2.Models
 
         public override string ToString()
         {
-            //return Name + ", " + team_name;
-            return ""; //TODO
+            return Name + ", " + DriversTeam.Name;
         }
     }
 }

@@ -16,22 +16,15 @@ namespace AquaraceV2.DAL
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("@driver_id", driver_id));
 
-
+            //TODO      team_id and team_name needs to be removed from the SP.
             string[] return_columns = { "driver_id", "driver_name", "paycheck", "team_id", "team_name"};
 
             List<object> driver_objects = ExecuteSelectProcedure("get_driver", parameters, 5, return_columns);
 
-            //Creating a new Driver
-            int driverid = (int)driver_objects[0];
-            string driver_name = driver_objects[1].ToString();
-            decimal paycheck = decimal.Parse(driver_objects[2].ToString());
-            int team_id = (int)driver_objects[3];
-            string team_name = driver_objects[4].ToString();
-
-            return new Driver(driverid, driver_name, paycheck, null);
+            return new Driver((int)driver_objects[0], driver_objects[1].ToString(), decimal.Parse(driver_objects[2].ToString()), getTeam((int)driver_objects[0]));
         }
 
-        private Team getTeam(string driverID)
+        private Team getTeam(int driverID)
         {
             return null;
         }
