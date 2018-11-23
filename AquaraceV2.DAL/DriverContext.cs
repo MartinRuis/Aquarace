@@ -13,6 +13,8 @@ namespace AquaraceV2.DAL
     {
         public Driver GetDriver(int driver_id)
         {
+            TeamContext teamContext = new TeamContext();
+
             List<SqlParameter> parameters = new List<SqlParameter>
             {
                 new SqlParameter("@driver_id", driver_id)
@@ -22,8 +24,8 @@ namespace AquaraceV2.DAL
             string[] return_columns = { "driver_id", "driver_name", "paycheck", "team_id", "team_name"};
 
             List<object> driver_objects = ExecuteSelectProcedure("get_driver", parameters, 5, return_columns);
-            TeamContext tc = new TeamContext();
-            return new Driver((int)driver_objects[0], driver_objects[1].ToString(), decimal.Parse(driver_objects[2].ToString()), tc.GetTeam((int)driver_objects[0]));
+
+            return new Driver((int)driver_objects[0], driver_objects[1].ToString(), decimal.Parse(driver_objects[2].ToString()), teamContext.GetTeam((int)driver_objects[0]));
         }
 
     }
