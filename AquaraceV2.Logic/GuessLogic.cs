@@ -22,7 +22,7 @@ namespace AquaraceV2.Logic
 
             foreach (Driver driver in drivers)
             {
-                total_cost += driver.paycheck;
+                total_cost += driver.Paycheck;
             }
 
             if (total_cost <= wallet)
@@ -31,7 +31,7 @@ namespace AquaraceV2.Logic
 
                 foreach (Driver driver in drivers)
                 {
-                    gc.Create(race_id, player_id, driver.driver_id, group_id);
+                    gc.Create(race_id, player_id, driver.ID, group_id);
                 }
             }
         }

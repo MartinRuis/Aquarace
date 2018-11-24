@@ -33,13 +33,20 @@ namespace AquaraceV2.RunTest
         static void Main(string[] args)
         {
             Program p = new Program();
-            while (true)
+            //while (true)
+            //{
+            //    Console.WriteLine("Give command:");
+            //    string input = Console.ReadLine();
+            //    p.ImplementInput(input);
+            //}
+            GroupContext gc = new GroupContext();
+            foreach(int id in gc.GetMemberIDs(1))
             {
-                Console.WriteLine("Give command:");
-                string input = Console.ReadLine();
-                p.ImplementInput(input);
+                Console.Write(id);
+                Console.WriteLine(gc.GetMemberName(id));
             }
-        
+            Console.ReadKey();
+            
         }
 
         
