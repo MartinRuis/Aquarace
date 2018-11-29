@@ -11,24 +11,33 @@ namespace AquaraceV2.DAL
 {
     public class AccountContext : SqlContext
     {
-        public bool Create(Player playerModel)
+        public void Create(string username, string password)
         {
             string salt = CreateSalt();
-            string hashed_password = GenerateHash(playerModel.Password, salt);
+            string hashed_password = GenerateHash(password, salt);
 
             List<SqlParameter> parameters = new List<SqlParameter>();
 
-            parameters.Add(new SqlParameter("@username", playerModel.UserName));
+            parameters.Add(new SqlParameter("@username", username));
             parameters.Add(new SqlParameter("@password", hashed_password));
             parameters.Add(new SqlParameter("@is_admin", 0));
             parameters.Add(new SqlParameter("@salt", salt));
 
             ExecuteInsertProcedure("create_account", parameters);
-            return true;
         }
-    
 
-    public string CreateSalt()
+        public Player GetPlayerByUsername(string username)
+        {
+            return null;
+        }
+
+        public List<string> GetAllPlayers()
+        {
+            //Todo      Ik wil een lijst van alle gebruikers terug krijgen
+            return null;
+        }
+
+        public string CreateSalt()
         {
             using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
             {
