@@ -5,27 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
+using AquaraceV2.Models;
 
 namespace AquaraceV2.DAL
 {
     public class AccountContext : SqlContext
     {
-        public void Create(string username, string password)
+        public bool Create(Player playerModel)
         {
             string salt = CreateSalt();
-            string hashed_password = GenerateHash(password, salt);
+            string hashed_password = GenerateHash(playerModel.Password, salt);
 
             List<SqlParameter> parameters = new List<SqlParameter>();
 
-            parameters.Add(new SqlParameter("@username", username));
+            parameters.Add(new SqlParameter("@username", playerModel.UserName));
             parameters.Add(new SqlParameter("@password", hashed_password));
             parameters.Add(new SqlParameter("@is_admin", 0));
             parameters.Add(new SqlParameter("@salt", salt));
 
             ExecuteInsertProcedure("create_account", parameters);
+            return true;
         }
+    
 
-        public string CreateSalt()
+    public string CreateSalt()
         {
             using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
             {

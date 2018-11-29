@@ -194,12 +194,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Player\Login.cshtml" />
+    <Content Include="Views\Player\CreateAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Group\" />
-    <Folder Include="Views\Player\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -213,6 +215,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AquaraceV2.Logic\AquaraceV2.Logic.csproj">
+      <Project>{5f8047a8-a73e-4154-837d-b94ef1fd6246}</Project>
+      <Name>AquaraceV2.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AquaraceV2.Models\AquaraceV2.Models.csproj">
+      <Project>{2d6f04b4-bd78-4d8f-a998-910578209841}</Project>
+      <Name>AquaraceV2.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

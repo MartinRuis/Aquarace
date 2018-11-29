@@ -13,7 +13,7 @@ namespace AquaraceV2.DAL
     {
         protected string connectionString = @"Data Source=mssql.fhict.local;Initial Catalog=dbi395898;Persist Security Info=True;User ID=dbi395898;Password=aquadis";
 
-        public void ExecuteInsertProcedure(string procedure_name, List<SqlParameter> parameters)
+        public bool ExecuteInsertProcedure(string procedure_name, List<SqlParameter> parameters)
         {
             using (var conn = new SqlConnection(connectionString))
             {
@@ -29,14 +29,19 @@ namespace AquaraceV2.DAL
                         }
 
                         command.ExecuteNonQuery();
+                       
 
                         conn.Close();
                     }
-                    catch (SqlException) { }
+                    catch (SqlException)
+                    {
+                        return false;
+                    }
                 }
             }
-        }
 
+            return true;
+        }
         public List<object> ExecuteSelectProcedure(string procedure_name, List<SqlParameter> parameters, int object_amount, string[] return_columns)
         {
             List<object> returnobject = new List<object>();
