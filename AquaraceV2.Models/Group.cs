@@ -13,7 +13,7 @@ namespace AquaraceV2.Models
 
         private int _maxPlayers;
         private List<Player> _players = new List<Player>();
-        private List<GuessedDrivers> _guessedDrivers = new List<GuessedDrivers>();
+        private List<GuessedDriver> _guessedDrivers = new List<GuessedDriver>();
 
         /// <summary>
         /// When you create a new group you must set the title.
@@ -41,6 +41,11 @@ namespace AquaraceV2.Models
         public List<Player> GetPlayers()
         {
             return _players;
+        }
+
+        public List<GuessedDriver> GetDrivers()
+        {
+            return _guessedDrivers;
         }
 
         public void AddOneOrMultiplePlayers(List<Player> players)
