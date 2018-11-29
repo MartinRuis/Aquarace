@@ -26,10 +26,6 @@ namespace AquaraceV2.Controllers
             Session["UserName"] = PlayerModel.UserName;
             //id moet ergensanders?
             return RedirectToAction("Index", "Home");
-        
-
-            ViewBag.Message = "username/password combination not found!";
-            return View();
         }
 
         public ActionResult CreateAccount()
@@ -37,7 +33,7 @@ namespace AquaraceV2.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateAccount(Player PlayerModel, string password)
+        public ActionResult CreateAccount(Player PlayerModel)
         {
             PlayerLogic playerlogic = new PlayerLogic();
             //check of username niet al bestaat!
