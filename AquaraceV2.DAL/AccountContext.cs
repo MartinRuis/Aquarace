@@ -26,6 +26,30 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("create_account", parameters);
         }
 
+        public bool CheckLogin(string username, string password)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@username", username));
+            string salt = ExecuteSelectProcedure("get_salt_from_player", parameters, 1, new string[] { "salt" })[0].ToString();
+            parameters = new List<SqlParameter>();
+            string hash = GenerateHash(password, salt);
+            parameters.Add(new SqlParameter("@username", username));
+            parameters.Add(new SqlParameter("@hashed_password", hash));
+            try
+            {
+                if (ExecuteSelectProcedure("check_login", parameters, 1, new string[] { "" })[0].ToString() == "1")
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return false;
+        }
+
+
         //TODO
         public Player GetPlayerByUsername(string username)
         {

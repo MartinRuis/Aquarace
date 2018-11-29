@@ -39,12 +39,8 @@ namespace AquaraceV2.RunTest
             //    string input = Console.ReadLine();
             //    p.ImplementInput(input);
             //}
-            GroupContext gc = new GroupContext();
-            foreach(int id in gc.GetMemberIDs(1))
-            {
-                Console.Write(id);
-                Console.WriteLine(gc.GetMemberName(id));
-            }
+            AccountContext ac = new AccountContext();
+            Console.WriteLine(ac.CheckLogin("Martin", "1234").ToString());
             Console.ReadKey();
             
         }
