@@ -26,14 +26,23 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("create_account", parameters);
         }
 
-        public bool CheckLogin(string username, string password)
+        public bool CheckLogin(Player player)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
-            parameters.Add(new SqlParameter("@username", username));
-            string salt = ExecuteSelectProcedure("get_salt_from_player", parameters, 1, new string[] { "salt" })[0].ToString();
+            parameters.Add(new SqlParameter("@username", player.UserName));
+            string salt;
+            try
+            {
+                salt = ExecuteSelectProcedure("get_salt_from_player", parameters, 1, new string[] {"salt"})[0]
+                    .ToString();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             parameters = new List<SqlParameter>();
-            string hash = GenerateHash(password, salt);
-            parameters.Add(new SqlParameter("@username", username));
+            string hash = GenerateHash(player.Password, salt);
+            parameters.Add(new SqlParameter("@username", player.UserName));
             parameters.Add(new SqlParameter("@hashed_password", hash));
             try
             {
@@ -52,6 +61,11 @@ namespace AquaraceV2.DAL
 
         //TODO
         public Player GetPlayerByUsername(string username)
+        {
+            return null;
+        }
+
+        public Player GetPlayerByID(int id)
         {
             return null;
         }
