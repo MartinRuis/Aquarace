@@ -34,6 +34,7 @@ namespace AquaraceV2.Logic
             {
                 if (!check_guessed(grc.GetMemberIDs(group_id), driver_ids, player_id))
                 {
+
                     return;
                 }
 
@@ -44,14 +45,14 @@ namespace AquaraceV2.Logic
             }
         }
 
-        public bool check_guessed(List<int> member_ids, int[] chosen_drivers_ids, int self_id)
+        public bool check_guessed(List<int> member_ids, int[] chosen_drivers_ids, int self_id, int race_id, int group_id)
         {
             GuessContext gc = new GuessContext();
             foreach (int id in member_ids)
             {
                 if (id != self_id)
                 {
-                    List<int> other_driver_ids = gc.Check_Guess_Existence(id);
+                    List<int> other_driver_ids = gc.Check_Guess_Existence(id, race_id, group_id);
                     if (chosen_drivers_ids.Contains(other_driver_ids[0]) && 
                         chosen_drivers_ids.Contains(other_driver_ids[1]) && 
                         chosen_drivers_ids.Contains(other_driver_ids[2]) && 

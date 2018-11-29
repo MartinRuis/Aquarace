@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuessTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -99,6 +100,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AquaraceV2.DAL\AquaraceV2.DAL.csproj">
+      <Project>{80e1634b-b9b8-4ba6-9011-7671aacf6492}</Project>
+      <Name>AquaraceV2.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AquaraceV2.Logic\AquaraceV2.Logic.csproj">
+      <Project>{5f8047a8-a73e-4154-837d-b94ef1fd6246}</Project>
+      <Name>AquaraceV2.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AquaraceV2.Models\AquaraceV2.Models.csproj">
+      <Project>{2d6f04b4-bd78-4d8f-a998-910578209841}</Project>
+      <Name>AquaraceV2.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AquaraceV2\AquaraceV2.csproj">
       <Project>{66892901-C160-4723-80F6-2EC8052EDAEC}</Project>
       <Name>AquaraceV2</Name>
