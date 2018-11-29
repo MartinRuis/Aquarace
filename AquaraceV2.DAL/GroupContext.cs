@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using AquaraceV2.Models;
 
 namespace AquaraceV2.DAL
 {
@@ -20,6 +21,12 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("create_group", parameters);
         }
 
+        //TODO
+        public Group GetGroupByID(int group_id)
+        {
+            return null;
+        }
+
         public void Delete(int group_id)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -29,6 +36,30 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("delete_group", parameters);
         }
 
+        //TODO
+        public void AddPlayer(int group_id, string user_id)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            parameters.Add(new SqlParameter("@group_id", group_id));
+            parameters.Add(new SqlParameter("@user_id", user_id));
+
+            ExecuteInsertProcedure("add_player_to_group", parameters);
+        }
+
+        //TODO
+        public Dictionary<int, string> GetAllMembersOfGroup(int group_id)
+        {
+            Dictionary<int, string> players = new Dictionary<int, string>();
+
+            players.Add(1, "Max Verstappen");
+            players.Add(3, "Racer #1245");
+            players.Add(7, "Test2");
+
+            return players;
+        }
+
+        //TODO REMOVE?!
         public List<int> GetMemberIDs(int group_id)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -61,6 +92,7 @@ namespace AquaraceV2.DAL
             return return_objects;
         }
 
+        //TODO REMOVE?!
         public string GetMemberName(int player_id)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();

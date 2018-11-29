@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
+using AquaraceV2.Models;
 
 namespace AquaraceV2.DAL
 {
@@ -23,6 +24,17 @@ namespace AquaraceV2.DAL
             parameters.Add(new SqlParameter("@salt", salt));
 
             ExecuteInsertProcedure("create_account", parameters);
+        }
+
+        public Player GetPlayerByUsername(string username)
+        {
+            return null;
+        }
+
+        public List<string> GetAllPlayers()
+        {
+            //Todo      Ik wil een lijst van alle gebruikers terug krijgen
+            return null;
         }
 
         public string CreateSalt()
