@@ -17,7 +17,7 @@ namespace AquaraceV2.DAL
 
             parameters.Add(new SqlParameter("@group_name", group_name));
             parameters.Add(new SqlParameter("@is_private", is_private));
-
+           
             ExecuteInsertProcedure("create_group", parameters);
         }
 

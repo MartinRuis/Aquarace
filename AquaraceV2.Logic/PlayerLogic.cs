@@ -22,7 +22,7 @@ namespace AquaraceV2.Logic
         {
             AccountContext accountContext = new AccountContext();
 
-            accountContext.Create(playerModel);
+            //accountContext.Create(playerModel);
         }
     }
 }

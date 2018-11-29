@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AquaraceV2.DAL;
+using AquaraceV2.Models;
 
 namespace AquaraceV2.RunTest
 {
@@ -39,13 +40,19 @@ namespace AquaraceV2.RunTest
             //    string input = Console.ReadLine();
             //    p.ImplementInput(input);
             //}
-            GroupContext gc = new GroupContext();
-            foreach(int id in gc.GetMemberIDs(1))
-            {
-                Console.Write(id);
-                Console.WriteLine(gc.GetMemberName(id));
-            }
+            //GroupContext gc = new GroupContext();
+            //foreach(int id in gc.GetMemberIDs(1))
+            //{
+            //    Console.Write(id);
+            //    Console.WriteLine(gc.GetMemberName(id));
+            //}
+            //Console.ReadKey();
+            AccountContext ac = new AccountContext();
+
+            //ac.Create("Martin", "1234");
+            Console.WriteLine(ac.Check_Login("Martin", "12345").ToString());
             Console.ReadKey();
+
             
         }
 
