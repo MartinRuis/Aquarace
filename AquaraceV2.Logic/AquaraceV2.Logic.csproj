@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DriverLogic.cs" />
+    <Compile Include="GroupLogic.cs" />
     <Compile Include="GuessLogic.cs" />
+    <Compile Include="PlayerLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

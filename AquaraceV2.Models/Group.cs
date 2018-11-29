@@ -8,8 +8,6 @@ namespace AquaraceV2.Models
 {
     public class Group
     {
-
-
         public string Title { get; private set; }
         public bool IsPrivate { get; private set; }
 
