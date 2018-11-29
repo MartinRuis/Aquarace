@@ -31,14 +31,31 @@ namespace AquaraceV2.Logic
             } 
         }
 
-        public List<Player> GetAllMembersofGroup(int groupID)
+        public void AddDriverToGroup(int groupid, int playerid, Driver driver)
+        {
+            DriverContext driverContext = new DriverContext();
+            AccountContext accountContext = new AccountContext();
+            Group existingGroup = context.GetGroupByID(groupid);
+
+            Driver existingDriver = driverContext.GetDriver(driver.ID);
+            Player existingPlayer = accountContext.GetPlayerByID(playerid);
+
+            //Bestaat de group, driver en player
+            if (existingGroup != null && existingDriver !=  null && existingPlayer != null)
+            {
+                //Bestaat de opgegeven driver niet al bestaat in de group
+                //Heeft de player niet al een driver van het zelfde team in de groep staan
+            }
+        }
+
+        public List<Player> GetAllMembersofGroup(int groupid)
         {
             List<Player> members = new List<Player>();
-            Group existingGroup = context.GetGroupByID(groupID);
+            Group existingGroup = context.GetGroupByID(groupid);
 
             if (existingGroup != null)
             {
-                foreach (KeyValuePair<int, string> member in context.GetAllMembersOfGroup(groupID))
+                foreach (KeyValuePair<int, string> member in context.GetAllMembersOfGroup(groupid))
                 {
                     members.Add(new Player(member.Key, member.Value));
                 }
@@ -46,6 +63,8 @@ namespace AquaraceV2.Logic
 
             return members;
         }
+
+        
 
     }
 }

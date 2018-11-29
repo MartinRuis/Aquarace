@@ -32,6 +32,11 @@ namespace AquaraceV2.DAL
             return null;
         }
 
+        public Player GetPlayerByID(int id)
+        {
+            return null;
+        }
+
         public List<string> GetAllPlayers()
         {
             //Todo      Ik wil een lijst van alle gebruikers terug krijgen

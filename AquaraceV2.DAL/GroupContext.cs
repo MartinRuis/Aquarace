@@ -21,9 +21,28 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("create_group", parameters);
         }
 
-        //TODO
+        //TODO      PAS OP! functie gaat niet werken voordat GetAllMembersOfGroup(int group_id) gefixed is.
         public Group GetGroupByID(int group_id)
         {
+            string title = "DefaultTitle";
+            bool privacy = false;
+            int maxAmountOfPlayers = 5;
+
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            List<Player> players = new List<Player>();
+
+            parameters.Add(new SqlParameter("@group_id", group_id));
+
+            ExecuteInsertProcedure("get_group_by_id", parameters);
+
+            Group group = new Group(title, privacy, maxAmountOfPlayers);
+
+            foreach (KeyValuePair<int, string> player in GetAllMembersOfGroup(group_id))
+            {
+                players.Add(new Player(player.Key, player.Value));
+            }
+            group.AddOneOrMultiplePlayers(players);
+
             return null;
         }
 
@@ -57,6 +76,14 @@ namespace AquaraceV2.DAL
             players.Add(7, "Test2");
 
             return players;
+        }
+
+        //TODO
+        private List<GuessedDriver> GetGuessedDrivers(int group_id)
+        {
+            List<GuessedDriver> drivers = new List<GuessedDriver>();
+
+            return drivers;
         }
 
         //TODO REMOVE?!
