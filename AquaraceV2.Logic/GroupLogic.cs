@@ -25,7 +25,7 @@ namespace AquaraceV2.Logic
             AccountContext accountContext = new AccountContext();
             Player existingPlayer = accountContext.GetPlayerByUsername(username);
 
-            if (existingPlayer != null && GetAllMembersofGroup(groupid).Any(m => m.Username == username))
+            if (existingPlayer != null && GetAllMembersofGroup(groupid).Any(m => m.UserName == username))
             {
                 context.AddPlayer(groupid, username);
             } 

@@ -18,16 +18,11 @@ namespace AquaraceV2.Logic
             return false;
         }
 
-        public bool createAccount(Player playerModel)
+        public void createAccount(Player playerModel)
         {
             AccountContext accountContext = new AccountContext();
-            //check of username al bestaat
-            //return false 
-            if (accountContext.Create(playerModel))
-            {
-                return true;
-            }
-            return false;
+
+            accountContext.Create(playerModel);
         }
     }
 }

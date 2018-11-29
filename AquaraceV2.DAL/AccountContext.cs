@@ -11,21 +11,22 @@ namespace AquaraceV2.DAL
 {
     public class AccountContext : SqlContext
     {
-        public void Create(string username, string password)
+        public void Create(Player player)
         {
             string salt = CreateSalt();
-            string hashed_password = GenerateHash(password, salt);
+            string hashed_password = GenerateHash(player.Password, salt);
 
             List<SqlParameter> parameters = new List<SqlParameter>();
 
-            parameters.Add(new SqlParameter("@username", username));
+            parameters.Add(new SqlParameter("@username", player.UserName));
             parameters.Add(new SqlParameter("@password", hashed_password));
-            parameters.Add(new SqlParameter("@is_admin", 0));
+            parameters.Add(new SqlParameter("@is_admin", false));
             parameters.Add(new SqlParameter("@salt", salt));
 
             ExecuteInsertProcedure("create_account", parameters);
         }
 
+        //TODO
         public Player GetPlayerByUsername(string username)
         {
             return null;

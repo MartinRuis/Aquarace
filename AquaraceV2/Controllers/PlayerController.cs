@@ -20,8 +20,8 @@ namespace AquaraceV2.Controllers
         public ActionResult Login(Player PlayerModel)
         {
             PlayerLogic playerlogic = new PlayerLogic();
-            
-            playerlogic.validatePlayerModel(PlayerModel)
+
+            playerlogic.validatePlayerModel(PlayerModel);
             
             Session["UserName"] = PlayerModel.UserName;
             //id moet ergensanders?
