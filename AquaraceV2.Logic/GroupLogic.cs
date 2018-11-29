@@ -40,7 +40,7 @@ namespace AquaraceV2.Logic
             {
                 foreach (KeyValuePair<int, string> member in context.GetAllMembersOfGroup(groupID))
                 {
-                    members.Add(new Player(member.Key, member.Value));
+                    members.Add(new Player(){ID = member.Key, UserName = member.Value});
                 }
             }
 

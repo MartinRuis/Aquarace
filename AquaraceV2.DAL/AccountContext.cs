@@ -19,7 +19,7 @@ namespace AquaraceV2.DAL
             List<SqlParameter> parameters = new List<SqlParameter>();
 
             parameters.Add(new SqlParameter("@username", player.UserName));
-            parameters.Add(new SqlParameter("@password", hashed_password));
+            parameters.Add(new SqlParameter("@hashed_password", hashed_password));
             parameters.Add(new SqlParameter("@is_admin", false));
             parameters.Add(new SqlParameter("@salt", salt));
 

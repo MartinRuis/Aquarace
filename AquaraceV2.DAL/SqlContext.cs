@@ -33,7 +33,7 @@ namespace AquaraceV2.DAL
 
                         conn.Close();
                     }
-                    catch (SqlException)
+                    catch (Exception ex)
                     {
                         return false;
                     }
