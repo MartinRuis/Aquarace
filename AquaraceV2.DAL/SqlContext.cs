@@ -64,7 +64,6 @@ namespace AquaraceV2.DAL
                         {
                             for (int x = 0; x < object_amount; x++)
                             {
-                               
                                 returnobject.Add(reader[return_columns[x]]);
                             }                                                                              
                         }                        

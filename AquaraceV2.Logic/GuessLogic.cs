@@ -33,7 +33,7 @@ namespace AquaraceV2.Logic
 
             if (total_cost <= wallet)
             {
-                if (!check_guessed(grc.GetMemberIDs(group_id), driver_ids, player_id, 0, 0))
+                if (!check_guessed(grc.GetMemberIDs(group_id), driver_ids, player_id))
                 {
 
                     return;
