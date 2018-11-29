@@ -21,12 +21,20 @@ namespace AquaraceV2.Controllers
         {
             PlayerLogic playerlogic = new PlayerLogic();
 
-            playerlogic.validatePlayerModel(PlayerModel);
-            
-            Session["UserName"] = PlayerModel.UserName;
-            //id moet ergensanders?
-            return RedirectToAction("Index", "Home");
+            if (playerlogic.validatePlayerModel(PlayerModel))
+            {
+                //Session["UserName"] = PlayerModel.UserName;
+                //id moet ergensanders?
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.Message = "error!";
+            return View(PlayerModel);
         }
+            
+           
+            
+        
 
         public ActionResult CreateAccount()
         {

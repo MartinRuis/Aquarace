@@ -13,8 +13,11 @@ namespace AquaraceV2.Logic
         public bool validatePlayerModel(Player playerModel)
         {
             AccountContext accountContext = new AccountContext();
-
-            //accountContext.
+            if (accountContext.CheckLogin(playerModel))
+            {
+                return true;
+            }
+            
             return false;
         }
 
