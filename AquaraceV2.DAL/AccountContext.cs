@@ -11,19 +11,56 @@ namespace AquaraceV2.DAL
 {
     public class AccountContext : SqlContext
     {
-        public void Create(Player player)
+        public bool Create(Player player)
         {
             string salt = CreateSalt();
             string hashed_password = GenerateHash(player.Password, salt);
-
+            //help
             List<SqlParameter> parameters = new List<SqlParameter>();
 
             parameters.Add(new SqlParameter("@username", player.UserName));
             parameters.Add(new SqlParameter("@hashed_password", hashed_password));
             parameters.Add(new SqlParameter("@is_admin", false));
             parameters.Add(new SqlParameter("@salt", salt));
+            try
+            {
+                if (DoesPlayerExist(player))
+                {
+                    return false;
+                }
+                else
+                {
+                    ExecuteInsertProcedure("create_account", parameters);
+                }
+                
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
+        }
 
-            ExecuteInsertProcedure("create_account", parameters);
+        public bool DoesPlayerExist(Player player)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@username", player.UserName));
+            try
+            {
+                if ((int)ExecuteSelectProcedure("check_player_existence", parameters, 1, new string[] { "" })[0] >= 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public bool CheckLogin(Player player)
