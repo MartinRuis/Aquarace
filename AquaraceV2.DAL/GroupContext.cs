@@ -21,6 +21,12 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("create_group", parameters);
         }
 
+        //TODO      Alleen non privated groups 
+        public List<Group> GetAllGroups()
+        {
+            return null;
+        }
+
         //TODO      PAS OP! functie gaat niet werken voordat GetAllMembersOfGroup(int group_id) gefixed is.
         public Group GetGroupByID(int group_id)
         {
@@ -33,15 +39,22 @@ namespace AquaraceV2.DAL
 
             parameters.Add(new SqlParameter("@group_id", group_id));
 
-            ExecuteInsertProcedure("get_group_by_id", parameters);
-
-            Group group = new Group(title, privacy, maxAmountOfPlayers);
-
-            foreach (KeyValuePair<int, string> player in GetAllMembersOfGroup(group_id))
+            List<object> values = ExecuteSelectProcedure("get_group_by_id", parameters, 3, new string[] { "group_name", "is_private", "max_player_amount" });
+            try
             {
-                players.Add(new Player(){ID = player.Key, UserName = player.Value});
+                Group group = new Group(values[0].ToString(), (bool)values[1], (int)values[2]);
+
+                foreach (KeyValuePair<int, string> player in GetAllMembersOfGroup(group_id))
+                {
+                    players.Add(new Player(player.Key, player.Value));
+                }
+                group.AddOneOrMultiplePlayers(players);
             }
-            group.AddOneOrMultiplePlayers(players);
+            catch (Exception e)
+            {
+
+            }
+            
 
             return null;
         }
