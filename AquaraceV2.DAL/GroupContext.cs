@@ -160,10 +160,14 @@ namespace AquaraceV2.DAL
             return return_object;
         }
 
-        //TODO
-        public bool DoesGroupTitleExists(string groupname)
+        //TODO - sql procedures
+        public bool DoesGroupNameExists(string groupname)
         {
-            return false;
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@group_name", groupname));
+
+            List<object> values = ExecuteSelectProcedure("check_group_existence", parameters, 1, new string[] { "" });
+            return (bool)values[0];
         }
     }
 }

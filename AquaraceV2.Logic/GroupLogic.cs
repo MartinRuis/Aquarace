@@ -62,7 +62,7 @@ namespace AquaraceV2.Logic
 
         public bool DoesGroupNameExists(string groupName)
         {
-            if (context.DoesGroupTitleExists(groupName))
+            if (context.DoesGroupNameExists(groupName))
             {
                 return true;
             }
