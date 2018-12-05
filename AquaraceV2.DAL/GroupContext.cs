@@ -81,8 +81,9 @@ namespace AquaraceV2.DAL
 
         public int GetGroupID(string groupname)
         {
-            List<object> values = ExecuteSelectProcedure("get_group_by_name",
-                new List<SqlParameter>() {new SqlParameter("@group_name", groupname)}, 1, new string[] {""});
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@group_name", groupname));
+            List<object> values = ExecuteSelectProcedure("get_group_by_name", parameters, 1, new string[] {"group_id"});
             return (int)values[0];
         }
 
