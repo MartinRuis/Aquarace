@@ -69,7 +69,7 @@ namespace AquaraceV2.DAL
         }
 
         //TODO
-        public void AddPlayer(int group_id, string user_id)
+        public void AddPlayer(int group_id, int user_id)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
 
@@ -77,6 +77,13 @@ namespace AquaraceV2.DAL
             parameters.Add(new SqlParameter("@user_id", user_id));
 
             ExecuteInsertProcedure("add_player_to_group", parameters);
+        }
+
+        public int GetGroupID(string groupname)
+        {
+            List<object> values = ExecuteSelectProcedure("get_group_by_name",
+                new List<SqlParameter>() {new SqlParameter("@group_name", groupname)}, 1, new string[] {""});
+            return (int)values[0];
         }
 
         //TODO

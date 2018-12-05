@@ -23,13 +23,19 @@ namespace AquaraceV2.Controllers
             
             GroupLogic groupLogic = new GroupLogic();
             groupLogic.CreateGroup(group.Title, group.IsPrivate);
-            return View();
+            groupLogic.AddPlayerToGroup(groupLogic.GetGroupId(group.Title), group.Title);
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult GroupDetails()
         {
             Group group = new Group("test");
-            group.AddOneOrMultiplePlayers(new List<Player>(){ new Player{ ID = 2 , UserName = "wokkels zijn lekker"} });
+            //group.AddOneOrMultiplePlayers(new List<Player>(){ new Player{ ID = 2 , UserName = "wokkels zijn lekker"} });
+            Player player = new Player();
+            player.UserName = "Jeroen de Bakker";
+            List<Player> playrList = new List<Player>();
+            playrList.Add(player);
+            group.AddOneOrMultiplePlayers(playrList);
             return View(group);
             //wokkels zijn lekkerdfsdffsdfsdf
         }

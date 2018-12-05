@@ -32,5 +32,13 @@ namespace AquaraceV2.Logic
 
             return false;
         }
+
+        public int GetUserID(string username)
+        {
+            AccountContext accountContext = new AccountContext();
+            Player p = accountContext.GetPlayerByUsername(username);
+            return p.ID;
+
+        }
     }
 }
