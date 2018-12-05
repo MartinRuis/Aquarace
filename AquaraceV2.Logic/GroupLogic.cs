@@ -30,6 +30,12 @@ namespace AquaraceV2.Logic
             return context.GetGroupByID(id);
         }
 
+        public int GetGroupId(string groupname)
+        {
+            GroupContext gc = new GroupContext();
+            return gc.GetGroupID(groupname);
+        }
+
         public void AddPlayerToGroup(int groupid, string username)
         {
             AccountContext accountContext = new AccountContext();
@@ -37,7 +43,7 @@ namespace AquaraceV2.Logic
 
             if (existingPlayer != null)
             {
-                context.AddPlayer(groupid, username);
+                context.AddPlayer(groupid, existingPlayer.ID);
             } 
         }
 

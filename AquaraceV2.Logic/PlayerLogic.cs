@@ -33,16 +33,12 @@ namespace AquaraceV2.Logic
             return false;
         }
 
-        public bool checkAccountExisting(Player playerModel)
+        public int GetUserID(string username)
         {
             AccountContext accountContext = new AccountContext();
+            Player p = accountContext.GetPlayerByUsername(username);
+            return p.ID;
 
-            if (accountContext.DoesPlayerExist(playerModel))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }
