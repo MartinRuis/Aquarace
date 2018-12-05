@@ -32,5 +32,17 @@ namespace AquaraceV2.Logic
 
             return false;
         }
+
+        public bool checkAccountExisting(Player playerModel)
+        {
+            AccountContext accountContext = new AccountContext();
+
+            if (accountContext.DoesPlayerExist(playerModel))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
