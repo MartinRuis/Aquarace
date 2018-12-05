@@ -13,8 +13,12 @@ namespace AquaraceV2.Controllers
     {
         public ActionResult AddGroup()
         {
-            CreateGroupViewModel group = new CreateGroupViewModel();
-            return View(group);
+            if (Session["Username"] != null)
+            {
+                CreateGroupViewModel group = new CreateGroupViewModel();
+                return View(group);
+            }
+            return RedirectToAction("Login", "Player");
         }
 
         [HttpPost]
@@ -23,21 +27,23 @@ namespace AquaraceV2.Controllers
             
             GroupLogic groupLogic = new GroupLogic();
             groupLogic.CreateGroup(group.Title, group.IsPrivate);
-            groupLogic.AddPlayerToGroup(groupLogic.GetGroupId(group.Title), group.Title);
+            groupLogic.AddPlayerToGroup(groupLogic.GetGroupId(group.Title), (string)Session["UserName"]);
             return RedirectToAction("Index", "Home");
         }
 
         public ActionResult GroupDetails()
         {
-            Group group = new Group("test");
-            //group.AddOneOrMultiplePlayers(new List<Player>(){ new Player{ ID = 2 , UserName = "wokkels zijn lekker"} });
-            Player player = new Player();
-            player.UserName = "Jeroen de Bakker";
-            List<Player> playrList = new List<Player>();
-            playrList.Add(player);
-            group.AddOneOrMultiplePlayers(playrList);
-            return View(group);
-            //wokkels zijn lekkerdfsdffsdfsdf
+            if (Session["Username"] != null)
+            {
+                Group group = new Group("test");
+                Player player = new Player();
+                player.UserName = "Jeroen de Bakker";
+                List<Player> playrList = new List<Player>();
+                playrList.Add(player);
+                group.AddOneOrMultiplePlayers(playrList);
+                return View(group);
+            }
+            return RedirectToAction("Login", "Player");
         }
         public ActionResult AddPlayerToGroup()
         {
