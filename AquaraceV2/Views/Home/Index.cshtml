@@ -2,12 +2,69 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Aquarace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+ 
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome @HttpContext.Current.Session["UserName"].ToString()</a></li>
+            <li>@Html.ActionLink("Logout", "Login", "Player")</li>
+        </ul>
+    </div>
 </div>
 
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Abu dhabi race rapport</h2>
+                <p class="lead">Pole: HAM</p>
+                <p class="lead">Winner: HAM</p>
+                <p class="lead">Fastest lap: VET</p>
+                <p class="lead">Position MAX: 3</p>
+                <p class="lead">DNF'S: 5</p>
+                <p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>
+            </div>
+        </div>
+
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Next race</h2>
+                <p class="lead">Country: Australia</p>
+                <p class="lead">Date: 17 MAR</p>
+                <p class="lead">Circuit: Melbourne GP Circuit</p>
+                <p class="lead">DRS Zone's: 1</p>
+                <p class="lead">Lap record: 1.24.125 (Michael Schumacher)</p>
+                <p><a href="#" class="btn btn-primary btn-lg">view race in calendar</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">My groups</h2>
+                <p><a href="#" class="btn btn-success btn-lg">@Html.ActionLink("Testgroup", "GroupDetails", "Group")</a></p>
+            </div>
+        </div>
+
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Add group</h2>
+                <p><a href="" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Add Group", "AddGroup", "Group")</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
 <div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>
@@ -29,3 +86,4 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+-->

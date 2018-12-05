@@ -20,12 +20,22 @@ namespace AquaraceV2.Logic
             }
         }
 
+        public List<Group> GetAllGroups()
+        {
+            return context.GetAllGroups();
+        }
+
+        public Group GetGroupDetails(int id)
+        {
+            return context.GetGroupByID(id);
+        }
+
         public void AddPlayerToGroup(int groupid, string username)
         {
             AccountContext accountContext = new AccountContext();
             Player existingPlayer = accountContext.GetPlayerByUsername(username);
 
-            if (existingPlayer != null && GetAllMembersofGroup(groupid).Any(m => m.UserName == username))
+            if (existingPlayer != null)
             {
                 context.AddPlayer(groupid, username);
             } 
@@ -45,24 +55,10 @@ namespace AquaraceV2.Logic
             {
                 //Bestaat de opgegeven driver niet al bestaat in de group
                 //Heeft de player niet al een driver van het zelfde team in de groep staan
+
             }
         }
 
-        public List<Player> GetAllMembersofGroup(int groupid)
-        {
-            List<Player> members = new List<Player>();
-            Group existingGroup = context.GetGroupByID(groupid);
-
-            if (existingGroup != null)
-            {
-                foreach (KeyValuePair<int, string> member in context.GetAllMembersOfGroup(groupid))
-                {
-                    members.Add(new Player(){ID = member.Key, UserName = member.Value});
-                }
-            }
-
-            return members;
-        }
 
         public bool DoesGroupNameExists(string groupName)
         {
@@ -74,6 +70,5 @@ namespace AquaraceV2.Logic
             return false;
         }
         
-
     }
 }

@@ -21,6 +21,12 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("create_group", parameters);
         }
 
+        //TODO      Alleen non privated groups 
+        public List<Group> GetAllGroups()
+        {
+            return null;
+        }
+
         //TODO      PAS OP! functie gaat niet werken voordat GetAllMembersOfGroup(int group_id) gefixed is.
         public Group GetGroupByID(int group_id)
         {
@@ -33,15 +39,22 @@ namespace AquaraceV2.DAL
 
             parameters.Add(new SqlParameter("@group_id", group_id));
 
-            ExecuteInsertProcedure("get_group_by_id", parameters);
-
-            Group group = new Group(title, privacy, maxAmountOfPlayers);
-
-            foreach (KeyValuePair<int, string> player in GetAllMembersOfGroup(group_id))
+            List<object> values = ExecuteSelectProcedure("get_group_by_id", parameters, 3, new string[] { "group_name", "is_private", "max_player_amount" });
+            try
             {
-                players.Add(new Player(){ID = player.Key, UserName = player.Value});
+                Group group = new Group(values[0].ToString(), (bool)values[1], (int)values[2]);
+                group.SetGroupID(group_id);
+                foreach (Player player in GetAllMembersOfGroup(group_id))
+                {
+                    players.Add(new Player { ID = player.ID, UserName = player.UserName});
+                }
+                group.AddOneOrMultiplePlayers(players);
             }
-            group.AddOneOrMultiplePlayers(players);
+            catch (Exception e)
+            {
+                //todo
+            }
+            
 
             return null;
         }
@@ -67,13 +80,9 @@ namespace AquaraceV2.DAL
         }
 
         //TODO
-        public Dictionary<int, string> GetAllMembersOfGroup(int group_id)
+        public List<Player> GetAllMembersOfGroup(int group_id)
         {
-            Dictionary<int, string> players = new Dictionary<int, string>();
-
-            players.Add(1, "Max Verstappen");
-            players.Add(3, "Racer #1245");
-            players.Add(7, "Test2");
+            List<Player> players = new List<Player>();
 
             return players;
         }

@@ -154,8 +154,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CreateGroupViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Aquadisf1logos2.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -196,11 +198,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Player\Login.cshtml" />
     <Content Include="Views\Player\CreateAccount.cshtml" />
+    <Content Include="Views\Group\AddGroup.cshtml" />
+    <Content Include="Views\Group\GroupDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Group\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>

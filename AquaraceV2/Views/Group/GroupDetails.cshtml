@@ -1,0 +1,42 @@
+﻿@model AquaraceV2.Models.Group
+
+@{
+    ViewBag.Title = "GroupDetails";
+}
+
+<h2>GroupDetails</h2>
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPrivate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPrivate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxPlayers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxPlayers)
+        </dd>
+        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

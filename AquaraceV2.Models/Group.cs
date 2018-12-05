@@ -10,6 +10,7 @@ namespace AquaraceV2.Models
     {
         public string Title { get; private set; }
         public bool IsPrivate { get; private set; }
+        public int ID { get; private set; }
 
         private int _maxPlayers;
         private List<Player> _players = new List<Player>();
@@ -28,6 +29,10 @@ namespace AquaraceV2.Models
             _maxPlayers = maxAmountOfPlayers;
         }
 
+        public void SetGroupID(int id)
+        {
+            ID = id;
+        }
         public void ChangeTitle(string title)
         {
             Title = title;
