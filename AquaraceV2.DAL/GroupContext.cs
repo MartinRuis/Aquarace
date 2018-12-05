@@ -159,5 +159,11 @@ namespace AquaraceV2.DAL
             }
             return return_object;
         }
+
+        //TODO
+        public bool DoesGroupTitleExists(string groupname)
+        {
+            return false;
+        }
     }
 }
