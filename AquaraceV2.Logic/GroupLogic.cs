@@ -65,5 +65,16 @@ namespace AquaraceV2.Logic
             }
         }
 
+
+        public bool DoesGroupNameExists(string groupName)
+        {
+            if (context.DoesGroupTitleExists(groupName))
+            {
+                return true;
+            }
+
+            return false;
+        }
+        
     }
 }
