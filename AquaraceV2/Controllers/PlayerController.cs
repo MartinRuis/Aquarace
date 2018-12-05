@@ -40,6 +40,7 @@ namespace AquaraceV2.Controllers
 
         public ActionResult CreateAccount()
         {
+            Session["UserName"] = null;
             return View();
         }
         [HttpPost]
