@@ -31,7 +31,7 @@ namespace AquaraceV2.Controllers
             Group group = new Group("test");
             group.AddOneOrMultiplePlayers(new List<Player>(){ new Player{ ID = 2 , UserName = "wokkels zijn lekker"} });
             return View(group);
-            //wokkels zijn lekker
+            //wokkels zijn lekkerdfsdffsdfsdf
         }
         public ActionResult AddPlayerToGroup()
         {
