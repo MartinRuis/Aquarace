@@ -14,7 +14,9 @@ namespace AquaraceV2.Controllers
         //Let user login. returns cookie with userID.
         public ActionResult Login()
         {
+            Session["UserName"] = null;
             return View();
+
         }
         [HttpPost]
         public ActionResult Login(Player PlayerModel)
@@ -23,7 +25,7 @@ namespace AquaraceV2.Controllers
 
             if (playerlogic.validatePlayerModel(PlayerModel))
             {
-                //Session["UserName"] = PlayerModel.UserName;
+                Session["UserName"] = PlayerModel.UserName;
                 //id moet ergensanders?
                 return RedirectToAction("Index", "Home");
             }
@@ -45,10 +47,15 @@ namespace AquaraceV2.Controllers
         {
             PlayerLogic playerlogic = new PlayerLogic();
             //check of username niet al bestaat!
-            playerlogic.createAccount(PlayerModel);
+            if (playerlogic.createAccount(PlayerModel))
+            {
+                return RedirectToAction("Login", "Player");
+            }
+
+            ViewBag.Message = "Error";
+            return View();
 
 
-            return RedirectToAction("Login", "Player");
         }        
     }
 }
