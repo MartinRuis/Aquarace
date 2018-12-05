@@ -17,6 +17,8 @@ namespace AquaraceV2.Controllers
             return RedirectToAction("Login", "Player");
         }
 
+        
+
         public ActionResult About()
         {
             if (Session["Username"] != null)

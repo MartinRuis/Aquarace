@@ -44,12 +44,26 @@
     </div>
 </div>
 
-<div class="jumbotron">
-    <h2 style="font-weight: bold;">My groups</h2>
-    <p><a href="#" class="btn btn-success btn-lg">HRM &nbsp;&nbsp;&nbsp; 5/5</a></p>
-    <p><a href="#" class="btn btn-danger btn-lg">DEV &nbsp;&nbsp;&nbsp; 4/5</a></p>
-    <p><a href="#" class="btn btn-success btn-lg">FAM &nbsp;&nbsp;&nbsp; 2/5</a></p>
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">My groups</h2>
+                <p><a href="#" class="btn btn-success btn-lg">@Html.ActionLink("Testgroup", "GroupDetails", "Group")</a></p>
+            </div>
+        </div>
+
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Add group</h2>
+                <p><a href="" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Add Group", "AddGroup", "Group")</a></p>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 <!--
 <div class="row">
     <div class="col-md-4">
