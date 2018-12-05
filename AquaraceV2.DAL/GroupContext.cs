@@ -43,7 +43,6 @@ namespace AquaraceV2.DAL
             try
             {
                 Group group = new Group(values[0].ToString(), (bool)values[1], (int)values[2]);
-
                 foreach (KeyValuePair<int, string> player in GetAllMembersOfGroup(group_id))
                 {
                     players.Add(new Player { ID = player.Key, UserName = player.Value});
@@ -52,7 +51,7 @@ namespace AquaraceV2.DAL
             }
             catch (Exception e)
             {
-
+                //todo
             }
             
 
