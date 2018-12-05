@@ -46,7 +46,7 @@ namespace AquaraceV2.DAL
 
                 foreach (KeyValuePair<int, string> player in GetAllMembersOfGroup(group_id))
                 {
-                    players.Add(new Player(player.Key, player.Value));
+                    players.Add(new Player { ID = player.Key, UserName = player.Value});
                 }
                 group.AddOneOrMultiplePlayers(players);
             }
