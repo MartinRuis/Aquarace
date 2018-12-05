@@ -43,6 +43,11 @@ namespace AquaraceV2.Models
             IsPrivate = privacy;
         }
 
+        public int GetMaxPlayers()
+        {
+            return _maxPlayers;
+        }
+
         public List<Player> GetPlayers()
         {
             return _players;
@@ -62,7 +67,7 @@ namespace AquaraceV2.Models
                     Player existingPlayer = _players.FirstOrDefault(x => x.ID == player.ID);
                     if (existingPlayer == null)
                     {
-                        _players.Add(existingPlayer);
+                        _players.Add(player);
                     }
                 }
             }
