@@ -43,9 +43,10 @@ namespace AquaraceV2.DAL
             try
             {
                 Group group = new Group(values[0].ToString(), (bool)values[1], (int)values[2]);
-                foreach (KeyValuePair<int, string> player in GetAllMembersOfGroup(group_id))
+                group.SetGroupID(group_id);
+                foreach (Player player in GetAllMembersOfGroup(group_id))
                 {
-                    players.Add(new Player { ID = player.Key, UserName = player.Value});
+                    players.Add(new Player { ID = player.ID, UserName = player.UserName});
                 }
                 group.AddOneOrMultiplePlayers(players);
             }
@@ -79,13 +80,9 @@ namespace AquaraceV2.DAL
         }
 
         //TODO
-        public Dictionary<int, string> GetAllMembersOfGroup(int group_id)
+        public List<Player> GetAllMembersOfGroup(int group_id)
         {
-            Dictionary<int, string> players = new Dictionary<int, string>();
-
-            players.Add(1, "Max Verstappen");
-            players.Add(3, "Racer #1245");
-            players.Add(7, "Test2");
+            List<Player> players = new List<Player>();
 
             return players;
         }
