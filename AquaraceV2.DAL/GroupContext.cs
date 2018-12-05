@@ -21,6 +21,12 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("create_group", parameters);
         }
 
+        //TODO      Alleen non privated groups 
+        public List<Group> GetAllGroups()
+        {
+            return null;
+        }
+
         //TODO      PAS OP! functie gaat niet werken voordat GetAllMembersOfGroup(int group_id) gefixed is.
         public Group GetGroupByID(int group_id)
         {
