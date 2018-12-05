@@ -99,12 +99,15 @@ namespace AquaraceV2.DAL
         //TODO
         public Player GetPlayerByUsername(string username)
         {
-            return null;
+            List<object> values = ExecuteSelectProcedure("get_player_by_username", new List<SqlParameter> { new SqlParameter("@username", username) }, 1, new string[] { "player_id" });
+            return new Player() { ID = (int)values[0], UserName = username };
         }
 
         public Player GetPlayerByID(int id)
         {
-            return null;
+            
+            List<object> values = ExecuteSelectProcedure("get_player_by_id", new List<SqlParameter> { new SqlParameter("@player_id", id) }, 1, new string[] { "user_name" });
+            return new Player() { ID = id, UserName = values[0].ToString() };
         }
 
         public List<string> GetAllPlayers()
