@@ -45,7 +45,7 @@ namespace AquaraceV2.DAL
             }
             catch (Exception e)
             {
-
+                //todo
             }
             
 
