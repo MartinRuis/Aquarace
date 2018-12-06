@@ -4,6 +4,23 @@
 
 @model AquaraceV2.Models.Group
 
+<head>
+    <style>
+        .wokkelszijnlekker {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .wokkelszijnlekker:hover {
+            color: #F9F9F9;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+    </style>
+
+</head>
+
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -52,21 +69,20 @@
         <div class="col col-md-6">
             <div class="jumbotron">
                 <h2 style="font-weight: bold;">My groups</h2>
-                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Testgroup", "GroupDetails", "Group")</p>
+                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Testgroup", "GroupDetails", "Group", null, new { @class = "wokkelszijnlekker" })</p>
                 
             </div>
         </div>
         <div class="col col-md-6">
             <div class="jumbotron">
                 <h2 style="font-weight: bold;">Add group</h2>
-                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Add Group", "AddGroup", "Group")</p>
+                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Add Group", "AddGroup", "Group", null, new { @class = "wokkelszijnlekker" })</p>
                 <br />
-                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Join public group", "AddGroup", "Group")</p><!--view all public groups toevoegen-->
+                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Join public group", "AddGroup", "Group", null, new { @class = "wokkelszijnlekker" })</p><!--view all public groups toevoegen-->
             </div>
         </div>
     </div>
 </div>
-
 
 
 <!--

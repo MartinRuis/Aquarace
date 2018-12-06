@@ -59,6 +59,45 @@ namespace AquaraceV2.DAL
             return null;
         }
 
+        public List<int> GetPublicGroups()
+        {
+            List<int> values = new List<int>();
+            try
+            {
+                foreach (object item in ExecuteSelectProcedure("get_all_public_groups", new List<SqlParameter>(), 1, new string[] { "group_id" }))
+                {
+                    values.Add((int)item);
+                }
+                return values;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public List<int> GetGroupIdsFromPlayer(int player_id)
+        {
+            try
+            {
+                List<int> group_ids = new List<int>();
+                List<object> values = ExecuteSelectProcedure("get_groups_from_player", new List<SqlParameter> { new SqlParameter("@player_id", player_id) }, 1, new string[] { "group_id" });
+                if (values != null)
+                {
+                    foreach (object value in values)
+                    {
+                        group_ids.Add((int)value);
+                    }
+                    return group_ids;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         public void Delete(int group_id)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();

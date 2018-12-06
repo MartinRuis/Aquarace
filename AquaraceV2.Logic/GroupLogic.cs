@@ -65,6 +65,17 @@ namespace AquaraceV2.Logic
             }
         }
 
+        public List<Group> GetPublicGroups()
+        {
+            GroupContext gc = new GroupContext();
+            List<Group> return_values = new List<Group>();
+            foreach (int id in gc.GetPublicGroups())
+            {
+                return_values.Add(gc.GetGroupByID(id));
+            }
+            return return_values;
+        }
+
 
         public bool DoesGroupNameExists(string groupName)
         {
