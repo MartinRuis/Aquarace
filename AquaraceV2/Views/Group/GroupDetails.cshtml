@@ -1,4 +1,5 @@
-﻿@model AquaraceV2.Models.Group
+﻿@using AquaraceV2.Models
+@model AquaraceV2.Models.Group
 
 @{
     ViewBag.Title = "GroupDetails";
@@ -25,18 +26,23 @@
         <dd>
             @Html.DisplayFor(model => model.IsPrivate)
         </dd>
+        @for (int i = 0; i < Model.GetMaxPlayers(); i++)
+        {
+            try
+            {
+                <p>@Model.GetPlayers()[i].UserName</p> 
+            }
+            catch (Exception ex)
+            {
+                int BetterI = i + 1;
+                    <p>empty user @BetterI</p>
+                
+            };
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MaxPlayers)
-        </dt>
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.MaxPlayers)
-        </dd>
-        
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back", "Index")
 </p>

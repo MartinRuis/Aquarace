@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AquaraceV2.DAL;
+using AquaraceV2.Logic;
 
 namespace AquaraceV2.RunTest
 {
@@ -39,10 +40,10 @@ namespace AquaraceV2.RunTest
             //    string input = Console.ReadLine();
             //    p.ImplementInput(input);
             //}
-            AccountContext ac = new AccountContext();
-            Console.WriteLine(ac.CheckLogin("Martin", "1234").ToString());
+
+            GroupLogic gc = new GroupLogic();
+            Console.WriteLine(gc.GetGroupId("Test"));
             Console.ReadKey();
-            
         }
 
         

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AquaraceV2.Logic;
 
 namespace AquaraceV2.Controllers
 {
@@ -10,6 +11,8 @@ namespace AquaraceV2.Controllers
     {
         public ActionResult Index()
         {
+            PlayerLogic playerLogic = new PlayerLogic();
+            Session["UserID"] = playerLogic.GetUserID((string)Session["UserName"]);
             if (Session["Username"] != null)
             {
                 return View();
