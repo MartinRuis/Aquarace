@@ -24,7 +24,7 @@ namespace AquaraceV2.Controllers
         [HttpPost]
         public ActionResult AddGroup(CreateGroupViewModel group)
         {
-            
+
             GroupLogic groupLogic = new GroupLogic();
             groupLogic.CreateGroup(group.Title, group.IsPrivate);
             groupLogic.AddPlayerToGroup(groupLogic.GetGroupId(group.Title), (string)Session["UserName"]);
