@@ -36,11 +36,10 @@ namespace AquaraceV2.Controllers
             if (Session["Username"] != null)
             {
                 Group group = new Group("test");
-                Player player = new Player();
-                player.UserName = "Jeroen de Bakker";
-                List<Player> playrList = new List<Player>();
-                playrList.Add(player);
+                List<Player> playrList = new List<Player> {new Player() {ID = 1, UserName = "Wokkels"}, new Player(){ID = 2, UserName = "zijn lekker"}};
                 group.AddOneOrMultiplePlayers(playrList);
+
+ 
                 return View(group);
             }
             return RedirectToAction("Login", "Player");
