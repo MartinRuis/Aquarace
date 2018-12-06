@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "GroupDetails";
+    ViewBag.PlayerCount = 0;
 }
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,20 +26,21 @@
                 <h2>Group: @Html.DisplayFor(model => model.Title)</h2>
 
                 <p>is group private? @Html.DisplayFor(model => model.IsPrivate)</p>
-
-                @for (int i = 0; i < Model.GetMaxPlayers(); i++)
-                {
-                    try
-                    {
-                        String Text = "Player " + (i + 1) + ": " + @Model.GetPlayers()[i].UserName;
-                        <p>@Text</p>
-                    }
-                    catch (Exception ex)
-                    {
-                        String Text = "Player " + (i + 1) + ": Empty";
-                        <p>@Text</p>
-                    };
-                }
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            @foreach (Player player in Model.GetPlayers())
+                            {
+                                <li class="list-group-item">Player @ViewBag.PlayerCount : @player.UserName</li>
+                                ViewBag.PlayerCount++;
+                            }
+                            @for (int i = Model.GetPlayers().Count; i <= Model.GetMaxPlayers() - 1; i++)
+                            {
+                                <li class="list-group-item">Empty</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
                 <p class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Back", "Index", "Home")</p>
             </div>
         </div>
@@ -60,21 +62,6 @@
             };
 
         }
-
-        <div class="card">
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    @foreach (Player player in Model.GetPlayers())
-                    {
-                        <li class="list-group-item">@player.UserName</li>
-                    }
-                    @for (int i = Model.GetPlayers().Count; i <= Model.GetMaxPlayers(); i++)
-                    {
-                        <li class="list-group-item">Empty</li>
-                    }
-                </ul>
-            </div>
-        </div>
 
     </dl>
 </div>
