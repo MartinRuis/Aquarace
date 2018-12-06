@@ -30,16 +30,31 @@
         {
             try
             {
-                <p>@Model.GetPlayers()[i].UserName</p> 
+                <p>@Model.GetPlayers()[i].UserName</p>
             }
             catch (Exception ex)
             {
                 int BetterI = i + 1;
-                    <p>empty user @BetterI</p>
-                
+                <p>empty user @BetterI</p>
+
             };
 
         }
+
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    @foreach (Player player in Model.GetPlayers())
+                    {
+                        <li class="list-group-item">@player.UserName</li>
+                    }
+                    @for (int i = Model.GetPlayers().Count; i <= Model.GetMaxPlayers(); i++)
+                    {
+                        <li class="list-group-item">Empty</li>
+                    }
+                </ul>
+            </div>
+        </div>
 
     </dl>
 </div>
