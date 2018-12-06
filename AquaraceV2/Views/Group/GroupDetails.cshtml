@@ -4,8 +4,7 @@
 @{
     ViewBag.Title = "GroupDetails";
 }
-
-head>
+<head>
 <style>
     .wokkelszijnlekker {
         text-decoration: none;
@@ -47,24 +46,6 @@ head>
                     <p style="color: #ff0000; font-weight: bold">group is private</p>
                 }
 
-
-                <!--
-
-    @for (int i = 0; i < Model.GetMaxPlayers(); i++)
-    {
-        try
-        {
-            String Text = "Player " + (i + 1) + ": " + @Model.GetPlayers()[i].UserName;
-            <p>@Text</p>
-        }
-        catch (Exception ex)
-        {
-            String Text = "Player " + (i + 1) + ": Empty";
-            <p>@Text</p>
-        };
-    }
-    -->
-
                 @{int playercount = 0;}
 
                 <div class="card">
@@ -88,41 +69,7 @@ head>
 
 
                 <p class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Back", "Index", "Home")</p>
-
-
-
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
-    
-    <!--
-        <dd>
-            @Html.DisplayFor(model => model.IsPrivate)
-        </dd>
-        @for (int i = 0; i < Model.GetMaxPlayers(); i++)
-        {
-            try
-            {
-                <p>@Model.GetPlayers()[i].UserName</p>
-            }
-            catch (Exception ex)
-            {
-                int BetterI = i + 1;
-                <p>empty user @BetterI</p>
-
-            };
-
-        }
-        -->
-        
-
-    <!--</dl>-->
 </div>

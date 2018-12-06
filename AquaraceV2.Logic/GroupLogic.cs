@@ -12,17 +12,23 @@ namespace AquaraceV2.Logic
     {
         GroupContext context = new GroupContext();
 
-        public void CreateGroup(string groupname, bool isprivated = false)
+        public void CreateGroup(string groupname, string username, bool isprivated = false)
         {
             if (!String.IsNullOrEmpty(groupname))
             {
                 context.Create(groupname, isprivated);
+                AddPlayerToGroup(GetGroupId(groupname), username);
             }
         }
 
         public List<Group> GetAllGroups()
         {
             return context.GetAllGroups();
+        }
+
+        public List<int> GetGroupIdsFromPlayer(int player_id)
+        {
+            return context.GetGroupIdsFromPlayer(player_id);
         }
 
         public Group GetGroupDetails(int id)

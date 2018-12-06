@@ -26,21 +26,16 @@ namespace AquaraceV2.Controllers
         {
 
             GroupLogic groupLogic = new GroupLogic();
-            groupLogic.CreateGroup(group.Title, group.IsPrivate);
-            groupLogic.AddPlayerToGroup(groupLogic.GetGroupId(group.Title), (string)Session["UserName"]);
+            groupLogic.CreateGroup(group.Title, (string)Session["UserName"], group.IsPrivate);
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult GroupDetails()
+        public ActionResult GroupDetails(int id)
         {
             if (Session["Username"] != null)
             {
-                Group group = new Group("test");
-                List<Player> playrList = new List<Player> {new Player() {ID = 1, UserName = "Wokkels"}, new Player(){ID = 2, UserName = "zijn lekker"}};
-                group.AddOneOrMultiplePlayers(playrList);
-
- 
-                return View(group);
+                GroupLogic groupLogic = new GroupLogic();
+                return View(groupLogic.GetGroupDetails(id));
             }
             return RedirectToAction("Login", "Player");
         }

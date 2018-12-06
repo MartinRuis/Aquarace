@@ -2,6 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
+@using AquaraceV2.Models
 @model AquaraceV2.Models.Group
 
 <head>
@@ -69,8 +70,11 @@
         <div class="col col-md-6">
             <div class="jumbotron">
                 <h2 style="font-weight: bold;">My groups</h2>
-                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Testgroup", "GroupDetails", "Group", null, new { @class = "wokkelszijnlekker" })</p>
-                
+                @foreach (Group group in ViewBag.groups)
+                {
+                    <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink(group.Title, "GroupDetails", "Group", new { id = group.ID }, new { @class = "wokkelszijnlekker"})</p>
+                    <br/>
+                }
             </div>
         </div>
         <div class="col col-md-6">
