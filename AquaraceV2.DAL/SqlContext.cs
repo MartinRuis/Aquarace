@@ -52,10 +52,12 @@ namespace AquaraceV2.DAL
                     try
                     {
                         conn.Open();
-
-                        foreach (SqlParameter parameter in parameters)
+                        if (parameters != null)
                         {
-                            command.Parameters.Add(parameter);
+                            foreach (SqlParameter parameter in parameters)
+                            {
+                                command.Parameters.Add(parameter);
+                            }
                         }
 
                         SqlDataReader reader = command.ExecuteReader();
