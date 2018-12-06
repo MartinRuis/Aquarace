@@ -5,24 +5,44 @@
     ViewBag.Title = "GroupDetails";
 }
 
-<h2>GroupDetails</h2>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Aquarace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-<div>
-    <h4>Group</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome @HttpContext.Current.Session["UserName"].ToString()</a></li>
+            <li>@Html.ActionLink("Logout", "Login", "Player")</li>
+        </ul>
+    </div>
+</div>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2>Group: @Html.DisplayFor(model => model.Title)</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                <p>is group private? @Html.DisplayFor(model => model.IsPrivate)</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPrivate)
-        </dt>
-
+                @for (int i = 0; i < Model.GetMaxPlayers(); i++)
+                {
+                    try
+                    {
+                        String Text = "Player " + (i + 1) + ": " + @Model.GetPlayers()[i].UserName;
+                        <p>@Text</p>
+                    }
+                    catch (Exception ex)
+                    {
+                        String Text = "Player " + (i + 1) + ": Empty";
+                        <p>@Text</p>
+                    };
+                }
+                <p class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Back", "Index", "Home")</p>
+            </div>
+        </div>
+    </div>
         <dd>
             @Html.DisplayFor(model => model.IsPrivate)
         </dd>
@@ -58,6 +78,3 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Back", "Index")
-</p>
