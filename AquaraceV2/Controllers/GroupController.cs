@@ -20,16 +20,21 @@ namespace AquaraceV2.Controllers
         [HttpPost]
         public ActionResult AddGroup(CreateGroupViewModel group)
         {
-            
+
             GroupLogic groupLogic = new GroupLogic();
             groupLogic.CreateGroup(group.Title, group.IsPrivate);
+            List<Player> players = new List<Player>();
+
+
+
+
             return View();
         }
 
         public ActionResult GroupDetails()
         {
             Group group = new Group("test");
-            group.AddOneOrMultiplePlayers(new List<Player>(){ new Player{ ID = 2 , UserName = "wokkels zijn lekker"} });
+            group.AddOneOrMultiplePlayers(new List<Player>() { new Player { ID = 2, UserName = "wokkels zijn lekker" } });
             return View(group);
             //wokkels zijn lekkerdfsdffsdfsdf
         }
