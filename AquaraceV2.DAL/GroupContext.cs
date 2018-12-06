@@ -74,7 +74,7 @@ namespace AquaraceV2.DAL
             List<SqlParameter> parameters = new List<SqlParameter>();
 
             parameters.Add(new SqlParameter("@group_id", group_id));
-            parameters.Add(new SqlParameter("@user_id", user_id));
+            parameters.Add(new SqlParameter("@player_id", user_id));
 
             ExecuteInsertProcedure("add_player_to_group", parameters);
         }

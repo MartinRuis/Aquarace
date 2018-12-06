@@ -2,11 +2,14 @@
     ViewBag.Title = "Home Page";
 }
 
+@model AquaraceV2.Models.Group
+
+
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             @Html.ActionLink("Aquarace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
- 
+
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome @HttpContext.Current.Session["UserName"].ToString()</a></li>
@@ -15,7 +18,7 @@
     </div>
 </div>
 
-<br/>
+<br />
 <div class="container">
     <div class="row">
         <div class="col col-md-6">
@@ -49,14 +52,16 @@
         <div class="col col-md-6">
             <div class="jumbotron">
                 <h2 style="font-weight: bold;">My groups</h2>
-                <p><a href="#" class="btn btn-success btn-lg">@Html.ActionLink("Testgroup", "GroupDetails", "Group")</a></p>
+                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Testgroup", "GroupDetails", "Group")</p>
+                
             </div>
         </div>
-
         <div class="col col-md-6">
             <div class="jumbotron">
                 <h2 style="font-weight: bold;">Add group</h2>
-                <p><a href="" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Add Group", "AddGroup", "Group")</a></p>
+                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Add Group", "AddGroup", "Group")</p>
+                <br />
+                <p class="btn btn-success btn-lg"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Join public group", "AddGroup", "Group")</p><!--view all public groups toevoegen-->
             </div>
         </div>
     </div>
