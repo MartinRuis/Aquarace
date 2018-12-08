@@ -24,24 +24,17 @@ namespace AquaraceV2.Controllers
         [HttpPost]
         public ActionResult AddGroup(CreateGroupViewModel group)
         {
-
             GroupLogic groupLogic = new GroupLogic();
-            groupLogic.CreateGroup(group.Title, group.IsPrivate);
-            groupLogic.AddPlayerToGroup(groupLogic.GetGroupId(group.Title), (string)Session["UserName"]);
+            groupLogic.CreateGroup(group.Title, (string)Session["UserName"], group.IsPrivate);
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult GroupDetails()
+        public ActionResult GroupDetails(int id)
         {
             if (Session["Username"] != null)
             {
-                Group group = new Group("test");
-                Player player = new Player();
-                player.UserName = "Jeroen de Bakker";
-                List<Player> playrList = new List<Player>();
-                playrList.Add(player);
-                group.AddOneOrMultiplePlayers(playrList);
-                return View(group);
+                GroupLogic groupLogic = new GroupLogic();
+                return View(groupLogic.GetGroupDetails(id));
             }
             return RedirectToAction("Login", "Player");
         }

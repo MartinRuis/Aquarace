@@ -49,14 +49,15 @@ namespace AquaraceV2.DAL
                     players.Add(new Player { ID = player.ID, UserName = player.UserName});
                 }
                 group.AddOneOrMultiplePlayers(players);
+
+                //TODO      Add GetAllMembersOfGroup()!!!!!~!1!!!
+                return group;
             }
             catch (Exception e)
             {
                 //todo
+                return null;
             }
-            
-
-            return null;
         }
 
         public List<int> GetPublicGroups()
@@ -130,7 +131,19 @@ namespace AquaraceV2.DAL
         public List<Player> GetAllMembersOfGroup(int group_id)
         {
             List<Player> players = new List<Player>();
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@group_id",group_id));
+            List<object> values = ExecuteSelectProcedure("get_members", parameters, 2, new string[] { "player_id", "username" });
 
+            while (values.Count > 0)
+            {
+                Player player = new Player();
+                player.ID = (int)values[0];
+                player.UserName = (string)values[1];
+                values.Remove(values[1]);
+                values.Remove(values[0]);
+                players.Add(player);
+            }
             return players;
         }
 

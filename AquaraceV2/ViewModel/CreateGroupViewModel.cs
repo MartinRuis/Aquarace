@@ -10,7 +10,7 @@ namespace AquaraceV2.ViewModel
     {
         [Required]
         public string Title { get; set; }
-        [Required]
-        public bool IsPrivate { get; set; }
+
+        [Required] public bool IsPrivate { get; set; } = true;
     }
 }
