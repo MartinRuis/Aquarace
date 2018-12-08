@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "GroupDetails";
+    ViewBag.PlayerCount = 0;
 }
 <head>
 <style>
@@ -45,6 +46,39 @@
                 {
                     <p style="color: #ff0000; font-weight: bold">group is private</p>
                 }
+                <p>is group private? @Html.DisplayFor(model => model.IsPrivate)</p>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            @foreach (Player player in Model.GetPlayers())
+                            {
+                                <li class="list-group-item">Player @ViewBag.PlayerCount : @player.UserName</li>
+                                ViewBag.PlayerCount++;
+                            }
+                            @for (int i = Model.GetPlayers().Count; i <= Model.GetMaxPlayers() - 1; i++)
+                            {
+                                <li class="list-group-item">Empty</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <p class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Back", "Index", "Home")</p>
+            </div>
+        </div>
+    </div>
+        <dd>
+            @Html.DisplayFor(model => model.IsPrivate)
+        </dd>
+        @for (int i = 0; i < Model.GetMaxPlayers(); i++)
+        {
+            try
+            {
+                <p>@Model.GetPlayers()[i].UserName</p>
+            }
+            catch (Exception ex)
+            {
+                int BetterI = i + 1;
+                <p>empty user @BetterI</p>
 
                 @{int playercount = 0;}
 
@@ -66,10 +100,11 @@
                         </ul>
                     </div>
                 </div>
-
-
                 <p class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink("Back", "Index", "Home")</p>
             </div>
         </div>
     </div>
+
+    </dl>
+
 </div>
