@@ -127,6 +127,18 @@ namespace AquaraceV2.DAL
             
         }
 
+        public bool RemovePlayer(int group_id, int user_id)
+        {
+            if (IsPlayerInGroup(user_id, group_id))
+            {
+                ExecuteInsertProcedure("remove_player_from_group", new List<SqlParameter> { new SqlParameter("@player_id", user_id), new SqlParameter("@group_id", group_id) });
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
         public bool IsPlayerInGroup(int user_id, int group_id)
         {
             List<object> value = ExecuteSelectProcedure("is_player_in_group", new List<SqlParameter> { new SqlParameter("@user_id", user_id), new SqlParameter("@group_id", group_id) }, 1, new string[] { "" });
