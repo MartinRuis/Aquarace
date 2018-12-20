@@ -30,6 +30,16 @@ namespace AquaraceV2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ViewPublicGroups()
+        {
+            List<Group> PublicGroups;
+            PublicGroups = groupLogic.GetPublicGroups();
+            return View(PublicGroups);
+        }
+
+
+
+
         public ActionResult GroupDetails(int id)
         {
             if (Session["Username"] != null)
