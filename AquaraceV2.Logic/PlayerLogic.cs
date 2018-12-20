@@ -46,7 +46,7 @@ namespace AquaraceV2.Logic
         /// </summary>
         /// <param name="groupid"></param>
         /// <returns></returns>
-        public Array GetAddPlayerName(int? groupid)
+        public string[] GetAddPlayerName(int? groupid)
         {
             AccountContext accountContext = new AccountContext();
             GroupContext groupContext = new GroupContext();

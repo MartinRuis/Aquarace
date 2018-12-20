@@ -4,21 +4,21 @@
 @{
     ViewBag.Title = "GroupDetails";
     ViewBag.PlayerCount = 0;
+    string Username = "Default";
 }
 <head>
-<style>
-    .wokkelszijnlekker {
-        text-decoration: none;
-        color: #ffffff;
-    }
-    .wokkelszijnlekker:hover {
-        color: #F9F9F9;
-        text-decoration: none;
-        cursor: pointer;
-    }
+    <style>
+        .wokkelszijnlekker {
+            text-decoration: none;
+            color: #ffffff;
+        }
 
-
-</style>
+            .wokkelszijnlekker:hover {
+                color: #F9F9F9;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
 
 </head>
 
@@ -27,7 +27,6 @@
     <div class="container">
         <div class="navbar-header">
             @Html.ActionLink("Aquarace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome @HttpContext.Current.Session["UserName"].ToString()</a></li>
@@ -35,7 +34,7 @@
         </ul>
     </div>
 </div>
-<br/>
+<br />
 <div class="container">
     <div class="row">
         <div class="col col-md-6">
@@ -44,8 +43,11 @@
 
                 @if (!Model.IsPrivate)
                 {
-                    <p style="color: #ff0000; font-weight: bold">group is private</p>
+                    <p>
+                        <i>private</i>
+                    </p>
                 }
+
                 <div class="card">
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
@@ -74,13 +76,62 @@
 
         <div class="col col-md-6">
             <div class="jumbotron">
-                <h2>Add player to group</h2>
+                <h2 class="text-center">Add Player</h2>
+                <div class="row">
+                    <div class="col-xs-12 col-md-10">
+                        <input id="listUsernames" placeholder="Usernames" />
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        @Html.ActionLink(
+                            "Add",
+                            "AddPlayerToGroup",
+                            "Group",
+                            new { id = Model.ID, username  = Username },
+                            new { @class = "btn btn-success addUserBtn"}
+                            )
+                        
 
-              <!--hier komt iets-->
+                    </div>
+
+                </div>
 
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+        <script src="~/Scripts/jquery.easy-autocomplete.min.js"></script>
+        <link href="~/Content/easy-autocomplete.min.css" rel="stylesheet" />
+
+        <script>
+            var array = @Html.Raw(Json.Encode(@ViewBag.Usernames));
+            var dataArray = [];
+
+            for(var i = 0; i < array.length; i++) {
+                dataArray[i] = array[i];
+            }
+
+            var autocompleteOptions = {
+                data: dataArray,
+                list: {
+                    maxNumberOfElements: 10,
+                    match: {
+                        enabled: true
+                    }
+                }
+            };
+            $('#listUsernames').easyAutocomplete(autocompleteOptions);
+
+            $('.addUserBtn').on('click', function () {
+                alert("afd");
+                var name = document.getElementById('listUsernames').value;
+                @(Username) = name;
+                
+            });
+
+        </script>
+
     </div>
 </div>
 
-        

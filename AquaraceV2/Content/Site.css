@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.easy-autocomplete {
+    width: 100% !important;
+}
+
+#listUsernames {
+    width: 100%;
+}

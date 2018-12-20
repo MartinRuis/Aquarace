@@ -21,6 +21,13 @@
     </style>
 </head>
 
+@if (!String.IsNullOrEmpty(ViewBag.message))
+{
+    <script>
+        alert(@Html.Raw(Json.Encode(@ViewBag.message)));
+    </script>
+}
+
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
