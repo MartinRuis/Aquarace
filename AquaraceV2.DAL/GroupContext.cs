@@ -46,7 +46,7 @@ namespace AquaraceV2.DAL
                 group.SetGroupID(group_id);
                 foreach (Player player in GetAllMembersOfGroup(group_id))
                 {
-                    players.Add(new Player { ID = player.ID, UserName = player.UserName});
+                    players.Add(new Player { ID = player.ID, UserName = player.UserName });
                 }
                 group.AddOneOrMultiplePlayers(players);
 
@@ -108,23 +108,14 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("delete_group", parameters);
         }
 
-        //TODO
-        public bool AddPlayer(int group_id, int user_id)
+        public void AddPlayer(int group_id, int user_id)
         {
-            if (IsPlayerInGroup(user_id, group_id))
-            {
-                return false;
-            } else
-            {
-                List<SqlParameter> parameters = new List<SqlParameter>();
+            List<SqlParameter> parameters = new List<SqlParameter>();
 
-                parameters.Add(new SqlParameter("@group_id", group_id));
-                parameters.Add(new SqlParameter("@player_id", user_id));
+            parameters.Add(new SqlParameter("@group_id", group_id));
+            parameters.Add(new SqlParameter("@player_id", user_id));
 
-                ExecuteInsertProcedure("add_player_to_group", parameters);
-                return true;
-            }
-            
+            ExecuteInsertProcedure("add_player_to_group", parameters);
         }
 
         public bool RemovePlayer(int group_id, int user_id)
@@ -142,20 +133,15 @@ namespace AquaraceV2.DAL
         public bool IsPlayerInGroup(int user_id, int group_id)
         {
             List<object> value = ExecuteSelectProcedure("is_player_in_group", new List<SqlParameter> { new SqlParameter("@user_id", user_id), new SqlParameter("@group_id", group_id) }, 1, new string[] { "" });
-            if((int)value[0] == 1)
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+
+            return (int)value[0] == 1 ? true : false;
         }
 
         public int GetGroupID(string groupname)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("@group_name", groupname));
-            List<object> values = ExecuteSelectProcedure("get_group_by_name", parameters, 1, new string[] {"group_id"});
+            List<object> values = ExecuteSelectProcedure("get_group_by_name", parameters, 1, new string[] { "group_id" });
             return (int)values[0];
         }
 
@@ -164,7 +150,7 @@ namespace AquaraceV2.DAL
         {
             List<Player> players = new List<Player>();
             List<SqlParameter> parameters = new List<SqlParameter>();
-            parameters.Add(new SqlParameter("@group_id",group_id));
+            parameters.Add(new SqlParameter("@group_id", group_id));
             List<object> values = ExecuteSelectProcedure("get_members", parameters, 2, new string[] { "player_id", "username" });
 
             while (values.Count > 0)
@@ -200,18 +186,18 @@ namespace AquaraceV2.DAL
             try
             {
                 foreach (object member_id in ExecuteSelectProcedure("get_members", parameters, 1, return_columns))
+                {
+                    try
                     {
-                        try
-                        {
-                            return_objects.Add((int)member_id);
-                        }
-                        catch(InvalidCastException e)
-                        {
-                            Console.Write(e.ToString());
-                        }
+                        return_objects.Add((int)member_id);
                     }
+                    catch (InvalidCastException e)
+                    {
+                        Console.Write(e.ToString());
+                    }
+                }
             }
-            catch(NullReferenceException e)
+            catch (NullReferenceException e)
             {
                 Console.Write(e.ToString());
             }
