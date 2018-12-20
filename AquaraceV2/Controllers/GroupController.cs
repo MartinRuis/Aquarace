@@ -30,7 +30,7 @@ namespace AquaraceV2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult ViewPublicGroups()
+        public ActionResult ViewPublicGroups(string message)
         {
             List<Group> PublicGroups;
             PublicGroups = groupLogic.GetPublicGroups();
@@ -46,23 +46,24 @@ namespace AquaraceV2.Controllers
             return RedirectToAction("Login", "Player");
         }
 
-        public ActionResult AddPlayerToGroup(int groupid, string username)
+        public ActionResult AddPlayerToGroup(int? id, string username)
         {
             bool completed = false;
 
             if(String.IsNullOrEmpty(username))
             {
-                completed = groupLogic.AddPlayerToGroup(groupid, Session["Username"].ToString());
+                completed = groupLogic.AddPlayerToGroup((int)id, Session["Username"].ToString());
                 
             }
             else
             {
-                completed = groupLogic.AddPlayerToGroup(groupid, username);
+                completed = groupLogic.AddPlayerToGroup((int)id, username);
             }
 
-            //TODO          Iets terug sturen.
-            return completed ? RedirectToAction("Login", "Player") : RedirectToAction("Login", "Player");
+            return completed ? RedirectToAction("GroupDetails", "Group", new{id = id}) : RedirectToAction("ViewPublicGroups", "Group", new{message = "Something went wrong. Please try again later."});
         }
+
+
 
         public ActionResult AddDriverToGroup()
         {

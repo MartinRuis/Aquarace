@@ -4,36 +4,62 @@
     ViewBag.Title = "ViewPublicGroups";
 }
 
-<h2>ViewPublicGroups</h2>
+<head>
+    <style>
+        .wokkelszijnlekker 
+        {
+            text-decoration: none;
+            color: #ffffff;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsPrivate)
-        </th>
-        <th></th>
-    </tr>
+        .wokkelszijnlekker:hover 
+        {
+            color: #F9F9F9;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsPrivate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Aquarace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-</table>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome @HttpContext.Current.Session["UserName"].ToString()</a></li>
+            <li>@Html.ActionLink("Logout", "Login", "Player")</li>
+        </ul>
+    </div>
+</div>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2>Public groups:</h2>
+                <br />
+                @foreach (var item in Model)
+                {
+                    if (item.GetPlayers().Count >= item.GetMaxPlayers())//
+                    {
+                        string occupants = "(" + item.GetPlayers().Count + "/" + item.GetMaxPlayers() + ")";
+
+                        <p class="btn btn-danger btn-xs disabled"> <span class="glyphicon glyphicon-plus"></span> @item.Title @occupants </p>
+                        <br />
+                    }
+                    else
+                    {
+                        string occupants = "(" + item.GetPlayers().Count + "/" + item.GetMaxPlayers() + ")";
+
+                        <p class="btn btn-success btn-xs"> <span class="glyphicon glyphicon-plus"></span> @Html.ActionLink(item.Title + " " + occupants, "AddPlayerToGroup", "Group", new { id = item.ID, username = "" }, new { @class = "wokkelszijnlekker" }) </p>
+                        <br />
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
