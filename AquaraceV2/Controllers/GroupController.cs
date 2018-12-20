@@ -37,9 +37,6 @@ namespace AquaraceV2.Controllers
             return View(PublicGroups);
         }
 
-
-
-
         public ActionResult GroupDetails(int id)
         {
             if (Session["Username"] != null)
