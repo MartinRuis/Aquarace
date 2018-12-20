@@ -30,6 +30,16 @@ namespace AquaraceV2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ViewPublicGroups()
+        {
+            List<Group> PublicGroups;
+            PublicGroups = groupLogic.GetPublicGroups();
+            return View(PublicGroups);
+        }
+
+
+
+
         public ActionResult GroupDetails(int id)
         {
             if (Session["Username"] != null)
@@ -38,19 +48,32 @@ namespace AquaraceV2.Controllers
             }
             return RedirectToAction("Login", "Player");
         }
-        public ActionResult AddPlayerToGroup()
+
+        public ActionResult AddPlayerToGroup(int groupid, string username)
         {
-            groupLogic.AddPlayerToGroup(0, "");
-            return null;
+            bool completed = false;
+
+            if(String.IsNullOrEmpty(username))
+            {
+                completed = groupLogic.AddPlayerToGroup(groupid, Session["Username"].ToString());
+                
+            }
+            else
+            {
+                completed = groupLogic.AddPlayerToGroup(groupid, username);
+            }
+
+            //TODO          Iets terug sturen.
+            return completed ? RedirectToAction("Login", "Player") : RedirectToAction("Login", "Player");
         }
 
         public ActionResult AddDriverToGroup()
         {
-            int groupid = 0;
-            int playerid = 0;
-            Driver driver = new Driver(0, "", 00, new Team(0, ""));
-
-            groupLogic.AddDriverToGroup(groupid, playerid, driver);
+            //int groupid = 0;
+            //int playerid = 0;
+            //Driver driver = new Driver(0, "", 00, new Team(0, ""));
+            
+            //groupLogic.AddDriverToGroup(groupid, playerid, driver);
 
             return null;
         }
