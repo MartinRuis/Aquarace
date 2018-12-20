@@ -108,7 +108,6 @@ namespace AquaraceV2.DAL
             ExecuteInsertProcedure("delete_group", parameters);
         }
 
-        //TODO
         public void AddPlayer(int group_id, int user_id)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
