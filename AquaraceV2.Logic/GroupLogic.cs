@@ -23,7 +23,11 @@ namespace AquaraceV2.Logic
 
         public List<Group> GetAllGroups()
         {
-            return context.GetAllGroups();
+            List<Group> groups = new List<Group>();
+
+            context.GetPublicGroups().ForEach(i => groups.Add(context.GetGroupByID(i)));
+            
+            return groups;
         }
 
         public List<int> GetGroupIdsFromPlayer(int player_id)

@@ -38,19 +38,29 @@ namespace AquaraceV2.Controllers
             }
             return RedirectToAction("Login", "Player");
         }
-        public ActionResult AddPlayerToGroup()
+
+        public ActionResult AddPlayerToGroup(int groupid, string username)
         {
-            groupLogic.AddPlayerToGroup(0, "");
+            if(String.IsNullOrEmpty(username))
+            {
+                groupLogic.AddPlayerToGroup(groupid, Session["Username"].ToString());
+            }
+            else
+            {
+                groupLogic.AddPlayerToGroup(groupid, username);
+            }
+
+            //TODO          Iets terug sturen.
             return null;
         }
 
         public ActionResult AddDriverToGroup()
         {
-            int groupid = 0;
-            int playerid = 0;
-            Driver driver = new Driver(0, "", 00, new Team(0, ""));
-
-            groupLogic.AddDriverToGroup(groupid, playerid, driver);
+            //int groupid = 0;
+            //int playerid = 0;
+            //Driver driver = new Driver(0, "", 00, new Team(0, ""));
+            
+            //groupLogic.AddDriverToGroup(groupid, playerid, driver);
 
             return null;
         }
