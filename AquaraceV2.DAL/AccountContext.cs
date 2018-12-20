@@ -113,8 +113,14 @@ namespace AquaraceV2.DAL
 
         public List<string> GetAllPlayers()
         {
-            //Todo      Ik wil een lijst van alle gebruikers terug krijgen
-            return null;
+            List<object> values = ExecuteSelectProcedure("get_all_players", null, 1, new string[] { "username" });
+            List<string> returnval = new List<string>();
+            foreach (object val in values)
+            {
+                returnval.Add(val.ToString());
+            }
+            return returnval;
+          
         }
 
         public string CreateSalt()
