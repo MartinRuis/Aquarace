@@ -200,6 +200,7 @@
     <Content Include="Views\Player\CreateAccount.cshtml" />
     <Content Include="Views\Group\AddGroup.cshtml" />
     <Content Include="Views\Group\GroupDetails.cshtml" />
+    <Content Include="Views\Group\ViewPublicGroups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
