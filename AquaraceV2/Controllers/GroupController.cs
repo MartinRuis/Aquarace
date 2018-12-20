@@ -34,6 +34,10 @@ namespace AquaraceV2.Controllers
         {
             List<Group> PublicGroups;
             PublicGroups = groupLogic.GetPublicGroups();
+
+            if (!String.IsNullOrEmpty(message))
+                ViewBag.message = message;
+
             return View(PublicGroups);
         }
 
@@ -41,6 +45,10 @@ namespace AquaraceV2.Controllers
         {
             if (Session["Username"] != null)
             {
+                PlayerLogic playerLogic = new PlayerLogic();
+                var listUsernames = playerLogic.GetAddPlayerName(id);
+                ViewBag.Usernames = listUsernames; 
+
                 return View(groupLogic.GetGroupDetails(id));
             }
             return RedirectToAction("Login", "Player");

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Messaging;
 using AquaraceV2.Models;
 
 namespace AquaraceV2.DAL
@@ -24,7 +25,7 @@ namespace AquaraceV2.DAL
             parameters.Add(new SqlParameter("@salt", salt));
             try
             {
-                if (DoesPlayerExist(player))
+                if (DoesPlayerExist(player.UserName))
                 {
                     return false;
                 }
@@ -42,13 +43,11 @@ namespace AquaraceV2.DAL
             
         }
 
-        public bool DoesPlayerExist(Player player)
+        public bool DoesPlayerExist(string username)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>();
-            parameters.Add(new SqlParameter("@username", player.UserName));
             try
             {
-                if ((int)ExecuteSelectProcedure("check_player_existence", parameters, 1, new string[] { "" })[0] >= 1)
+                if ((int)ExecuteSelectProcedure("check_player_existence", new List<SqlParameter>{new SqlParameter("@username", username)}, 1, new string[] { "" })[0] >= 1)
                 {
                     return true;
                 }
@@ -101,7 +100,8 @@ namespace AquaraceV2.DAL
         public Player GetPlayerByUsername(string username)
         {
             List<object> values = ExecuteSelectProcedure("get_player_by_username", new List<SqlParameter> { new SqlParameter("@username", username) }, 1, new string[] { "player_id" });
-            return new Player() { ID = (int)values[0], UserName = username };
+
+            return values.Count != 0 ? new Player { ID = (int)values[0], UserName = username } : null;
         }
 
         public Player GetPlayerByID(int id)
