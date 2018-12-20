@@ -51,17 +51,20 @@ namespace AquaraceV2.Controllers
 
         public ActionResult AddPlayerToGroup(int groupid, string username)
         {
+            bool completed = false;
+
             if(String.IsNullOrEmpty(username))
             {
-                groupLogic.AddPlayerToGroup(groupid, Session["Username"].ToString());
+                completed = groupLogic.AddPlayerToGroup(groupid, Session["Username"].ToString());
+                
             }
             else
             {
-                groupLogic.AddPlayerToGroup(groupid, username);
+                completed = groupLogic.AddPlayerToGroup(groupid, username);
             }
 
             //TODO          Iets terug sturen.
-            return null;
+            return completed ? RedirectToAction("Login", "Player") : RedirectToAction("Login", "Player");
         }
 
         public ActionResult AddDriverToGroup()

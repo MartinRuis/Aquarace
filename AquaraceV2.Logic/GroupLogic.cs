@@ -46,7 +46,7 @@ namespace AquaraceV2.Logic
             return gc.GetGroupID(groupname);
         }
 
-        public void AddPlayerToGroup(int groupid, string username)
+        public bool AddPlayerToGroup(int groupid, string username)
         {
             AccountContext accountContext = new AccountContext();
             Player existingPlayer = accountContext.GetPlayerByUsername(username);
@@ -54,7 +54,10 @@ namespace AquaraceV2.Logic
             if (existingPlayer != null)
             {
                 context.AddPlayer(groupid, existingPlayer.ID);
-            } 
+                return true;
+            }
+
+            return false;
         }
 
         public void AddDriverToGroup(int groupid, int playerid, Driver driver)
