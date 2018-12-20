@@ -11,6 +11,8 @@ namespace AquaraceV2.Controllers
 {
     public class GroupController : Controller
     {
+        GroupLogic groupLogic = new GroupLogic();
+
         public ActionResult AddGroup()
         {
             if (Session["Username"] != null)
@@ -24,7 +26,6 @@ namespace AquaraceV2.Controllers
         [HttpPost]
         public ActionResult AddGroup(CreateGroupViewModel group)
         {
-            GroupLogic groupLogic = new GroupLogic();
             groupLogic.CreateGroup(group.Title, (string)Session["UserName"], group.IsPrivate);
             return RedirectToAction("Index", "Home");
         }
@@ -33,17 +34,33 @@ namespace AquaraceV2.Controllers
         {
             if (Session["Username"] != null)
             {
-                GroupLogic groupLogic = new GroupLogic();
                 return View(groupLogic.GetGroupDetails(id));
             }
             return RedirectToAction("Login", "Player");
         }
         public ActionResult AddPlayerToGroup()
         {
+            groupLogic.AddPlayerToGroup(0, "");
             return null;
         }
 
         public ActionResult AddDriverToGroup()
+        {
+            int groupid = 0;
+            int playerid = 0;
+            Driver driver = new Driver(0, "", 00, new Team(0, ""));
+
+            groupLogic.AddDriverToGroup(groupid, playerid, driver);
+
+            return null;
+        }
+
+        public ActionResult RemovePlayerFromGroup()
+        {
+            return null;
+        }
+
+        public ActionResult RemoveDriverFromGroup()
         {
             return null;
         }

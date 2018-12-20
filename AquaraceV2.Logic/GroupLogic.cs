@@ -67,7 +67,7 @@ namespace AquaraceV2.Logic
             {
                 //Bestaat de opgegeven driver niet al bestaat in de group
                 //Heeft de player niet al een driver van het zelfde team in de groep staan
-
+                
             }
         }
 
