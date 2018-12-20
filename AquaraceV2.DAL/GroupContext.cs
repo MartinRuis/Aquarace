@@ -109,14 +109,34 @@ namespace AquaraceV2.DAL
         }
 
         //TODO
-        public void AddPlayer(int group_id, int user_id)
+        public bool AddPlayer(int group_id, int user_id)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>();
+            if (IsPlayerInGroup(user_id, group_id))
+            {
+                return false;
+            } else
+            {
+                List<SqlParameter> parameters = new List<SqlParameter>();
 
-            parameters.Add(new SqlParameter("@group_id", group_id));
-            parameters.Add(new SqlParameter("@player_id", user_id));
+                parameters.Add(new SqlParameter("@group_id", group_id));
+                parameters.Add(new SqlParameter("@player_id", user_id));
 
-            ExecuteInsertProcedure("add_player_to_group", parameters);
+                ExecuteInsertProcedure("add_player_to_group", parameters);
+                return true;
+            }
+            
+        }
+
+        public bool IsPlayerInGroup(int user_id, int group_id)
+        {
+            List<object> value = ExecuteSelectProcedure("is_player_in_group", new List<SqlParameter> { new SqlParameter("@user_id", user_id), new SqlParameter("@group_id", group_id) }, 1, new string[] { "" });
+            if((int)value[0] == 1)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         public int GetGroupID(string groupname)
