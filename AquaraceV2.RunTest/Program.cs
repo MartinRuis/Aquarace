@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AquaraceV2.DAL;
 using AquaraceV2.Logic;
+using AquaraceV2.Models;
 
 namespace AquaraceV2.RunTest
 {
@@ -34,14 +35,10 @@ namespace AquaraceV2.RunTest
         static void Main(string[] args)
         {
             Program p = new Program();
-            //while (true)
-            //{
-            //    Console.WriteLine("Give command:");
-            //    string input = Console.ReadLine();
-            //    p.ImplementInput(input);
-            //}
-
-            GroupLogic gc = new GroupLogic();
+            GuessLogic gl = new GuessLogic();
+            Race race = new Race() { Drivers{ new Driver()} };
+            
+            gl.Create()
             Console.WriteLine(gc.GetGroupId("Test"));
             Console.ReadKey();
         }

@@ -8,65 +8,64 @@ using AquaraceV2.Models;
 
 namespace AquaraceV2.Logic
 {
-    //comment for commit
+    
     public class GuessLogic
     {
-        public List<Driver> AvailableDrivers()
+        public bool Create(Player player, Race race, int group_id, List<Driver> chosen_drivers, int max_placement)
         {
-            throw new NotImplementedException();
+            if (chosen_drivers.Count() > 5)
+            {
+                return false;
+            }
+            if (!Check_Team(chosen_drivers))
+            {
+                return false;
+            }
+            if (!Check_Wallet(player.Wallet, chosen_drivers))
+            {
+                return false;
+            }
         }
-        //NOT FINISHED
-        public void Create(List<Driver> drivers, int race_id, decimal wallet, int group_id, int player_id)
-        {
-            GuessContext gc = new GuessContext();
-            GroupContext grc = new GroupContext();
-            decimal total_cost = 0;
 
-            int[] driver_ids = { };
-            int i = 0;
+        public bool Check_Existence()
+        {
+
+        }
+
+        public bool Check_Wallet(decimal wallet, List<Driver> drivers)
+        {
+            decimal cost = 0;
             foreach (Driver driver in drivers)
             {
-                total_cost += driver.Paycheck;
-                driver_ids[i] = driver.ID;
-                i++;
+                cost += driver.Paycheck;
             }
-
-            if (total_cost <= wallet)
+            if (cost > wallet)
             {
-                if (!check_guessed(grc.GetMemberIDs(group_id), driver_ids, player_id, 0, 0))
-                {
-
-                    return;
-                }
-
-                foreach (Driver driver in drivers)
-                {
-                    gc.Create(race_id, player_id, driver.ID, group_id);
-                }
+                return false;
+            } else
+            {
+                return true;
             }
         }
 
-        public bool check_guessed(List<int> member_ids, int[] chosen_drivers_ids, int self_id, int race_id, int group_id)
+        public bool Check_Team(List<Driver> drivers)
         {
-            GuessContext gc = new GuessContext();
-            foreach (int id in member_ids)
+            foreach (Driver driver in drivers)
             {
-                if (id != self_id)
+                foreach (Driver driver2 in drivers)
                 {
-                    List<int> other_driver_ids = gc.Check_Guess_Existence(id, race_id, group_id);
-                    if (chosen_drivers_ids.Contains(other_driver_ids[0]) && 
-                        chosen_drivers_ids.Contains(other_driver_ids[1]) && 
-                        chosen_drivers_ids.Contains(other_driver_ids[2]) && 
-                        chosen_drivers_ids.Contains(other_driver_ids[3]) && 
-                        chosen_drivers_ids.Contains(other_driver_ids[4]))
+                    if (driver.ID == driver2.ID)
                     {
-                        return false;
+                        break;
+                    } else
+                    {
+                        if (driver.DriversTeam.ID == driver2.DriversTeam.ID)
+                        {
+                            return false;
+                        }
                     }
-                     
                 }
-                
             }
-
             return true;
         }
     }
