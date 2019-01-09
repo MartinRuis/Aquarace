@@ -21,24 +21,52 @@
 <br />
 <div class="container">
     <div class="row">
-@foreach (var item in Model)
-{
-        <div class="col col-md-6">
+        
+        <div class="col col-md-12">
             <div class="jumbotron">
-                <h2 style="font-weight: bold;">Race location: @Html.DisplayFor(modelItem => item.RaceLocation)</h2>
-                <p class="lead">Race Date: @Html.DisplayFor(modelItem => item.DateOfRace)</p>
-                <p class="lead">Race number: @Html.DisplayFor(modelItem => item.RaceID)</p>
-                <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
+                <h2 style="font-weight: bold;">2018 Races</h2>
+               
             </div>
         </div>
-}
-        <div class="col col-md-6">
-            <div class="jumbotron">
-                <h2 style="font-weight: bold;">2019 Races coming soon!</h2>
-                
-                <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
-            </div>
-        </div>
+        
+
+        @foreach (var item in Model)
+        {
+            if (item.DateOfRace < DateTime.Now)
+            {
+                <div class="col col-md-6">
+                    <div class="jumbotron">
+                        <h2 style="font-weight: bold;">Race location: @Html.DisplayFor(modelItem => item.RaceLocation)</h2>
+                        <p class="lead">Race Date: @Html.DisplayFor(modelItem => item.DateOfRace)</p>
+                        <p class="lead">Race number: @Html.DisplayFor(modelItem => item.RaceID)</p>
+                        <p class="lead" style="display: inline">Race Completed:
+                            <div style="display: inline; font-size: 20px; color: green"><b>Yes</b></div></p>
+                        <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
+                    </div>
+                </div>
+            }
+            else
+            {
+//workaround 
+                <div class="col col-md-12">
+                    <div class="jumbotron">
+                        <h2 style="font-weight: bold;">Full 2019 race calendar coming soon!</h2>
+
+                        <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
+                    </div>
+                </div>
+                <div class="col col-md-6">
+                    <div class="jumbotron">
+                        <h2 style="font-weight: bold;">Race location: @Html.DisplayFor(modelItem => item.RaceLocation)</h2>
+                        <p class="lead">Race Date: @Html.DisplayFor(modelItem => item.DateOfRace)</p>
+                        <p class="lead">Race number: 1</p>
+                        <p class="lead" style="display: inline">Race Completed:
+                            <div style="display: inline; font-size: 20px; color: red"><b>No</b></div></p>
+                        <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
+                    </div>
+                </div>
+            }
+        }
+
     </div>
 </div>
-</table>
