@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AquaraceV2.Models.Calendar>
+
+@{
+    ViewBag.Title = "Calendar";
+}
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Aquarace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome @HttpContext.Current.Session["UserName"].ToString()</a></li>
+            <li>@Html.ActionLink("Logout", "Login", "Player")</li>
+        </ul>
+    </div>
+</div>
+
+<br />
+
+
+@foreach (var item in Model) {
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-6">
+                <div class="jumbotron">
+                    <h2 style="font-weight: bold;">Race location: @Html.DisplayFor(modelItem => item.RaceLocation)</h2>
+                    <p class="lead">Race Date: @Html.DisplayFor(modelItem => item.DateOfRace)</p>
+                    <p class="lead">Race number: @Html.DisplayFor(modelItem => item.RaceID)</p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <p class="lead"></p>
+                    <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaceID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaceLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FastestRoundDriverId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfRace)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
