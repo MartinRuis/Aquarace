@@ -19,46 +19,26 @@
 </div>
 
 <br />
-
-
-@foreach (var item in Model) {
-
-    <div class="container">
-        <div class="row">
-            <div class="col col-md-6">
-                <div class="jumbotron">
-                    <h2 style="font-weight: bold;">Race location: @Html.DisplayFor(modelItem => item.RaceLocation)</h2>
-                    <p class="lead">Race Date: @Html.DisplayFor(modelItem => item.DateOfRace)</p>
-                    <p class="lead">Race number: @Html.DisplayFor(modelItem => item.RaceID)</p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <p class="lead"></p>
-                    <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
-                </div>
+<div class="container">
+    <div class="row">
+@foreach (var item in Model)
+{
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Race location: @Html.DisplayFor(modelItem => item.RaceLocation)</h2>
+                <p class="lead">Race Date: @Html.DisplayFor(modelItem => item.DateOfRace)</p>
+                <p class="lead">Race number: @Html.DisplayFor(modelItem => item.RaceID)</p>
+                <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
+            </div>
+        </div>
+}
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">2019 Races coming soon!</h2>
+                
+                <!--<p><a href="#" class="btn btn-primary btn-lg">view full race results</a></p>-->
             </div>
         </div>
     </div>
-
-
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RaceID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RaceLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FastestRoundDriverId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfRace)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
+</div>
 </table>
