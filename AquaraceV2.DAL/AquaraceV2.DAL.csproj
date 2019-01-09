@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountContext.cs" />
+    <Compile Include="CalendarContext.cs" />
     <Compile Include="DriverContext.cs" />
     <Compile Include="GroupContext.cs" />
     <Compile Include="GuessContext.cs" />
