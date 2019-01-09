@@ -41,11 +41,17 @@
             <div class="jumbotron">
                 <h2>Group: @Html.DisplayFor(model => model.Title)</h2>
 
-                @if (!Model.IsPrivate)
+                @if (Model.IsPrivate)
                 {
-                    <p>
-                        <i>private</i>
-                    </p>
+                <p>
+                    <i>Group is private (invite only)</i>
+                </p>
+                }
+                else
+                {
+                <p>
+                    <i>Group is Public</i>
+                </p>
                 }
 
                 <div class="card">
@@ -89,7 +95,7 @@
                             new { id = Model.ID, username  = Username },
                             new { @class = "btn btn-success addUserBtn"}
                             )
-                        
+
 
                     </div>
 
@@ -127,10 +133,20 @@
                 alert("afd");
                 var name = document.getElementById('listUsernames').value;
                 @(Username) = name;
-                
+
             });
 
         </script>
+
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2>Place bet</h2>
+                <p>Next race: Austria</p>
+                <p>Betting expires on 16-03-2019</p>
+                <p class="btn btn-success btn-lg">@Html.ActionLink("Place bet!", "", "", null, new { style = "color: #FFFFFF" })</p>
+
+</div>
+        </div>
 
     </div>
 </div>
