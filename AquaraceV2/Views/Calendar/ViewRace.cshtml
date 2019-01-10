@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "ViewRace";
+}
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            @Html.ActionLink("Aquarace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome @HttpContext.Current.Session["UserName"].ToString()</a></li>
+            <li>@Html.ActionLink("Logout", "Login", "Player")</li>
+        </ul>
+    </div>
+</div>
+
+<br/>
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col col-md-12">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Abu dhabi race results</h2>
+            </div>
+        </div>
+
+        <div class="col col-md-4">
+            <div class="jumbotron"style="background-color: silver">
+                <h2 style="font-weight: bold;">P2</h2>
+                <br />
+                <p class="lead">Sebastian Vettel</p>
+            </div>
+        </div>
+        
+        <div class="col col-md-4">
+            <div class="jumbotron" style="background-color: gold">
+                <h2 style="font-weight: bold;">P1<span class="glyphicon glyphicon-tower"></span></h2>
+                <br />
+                <p class="lead">Lewis Hamilton</p>
+            </div>
+        </div>
+        
+        <div class="col col-md-4">
+            <div class="jumbotron"style="background-color: #cd7f32 ">
+                <h2 style="font-weight: bold;">P3</h2>
+                <br />
+                <p class="lead">Max Verstappen</p>
+            </div>
+        </div>
+
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Point Finishers</h2>
+                <p class="lead">P4: Daniel Ricciardo</p>
+                <p class="lead">P5: Valterri Bottas</p>
+                <p class="lead">P6: Carlos Saints</p>
+                <p class="lead">P7: Charles Leclerc</p>
+                <p class="lead">P8: Sergio Perez</p>
+                <p class="lead">P9: Romain Grosjean</p>
+                <p class="lead">P10: Kevin Magnussen</p>
+
+            </div>
+        </div>
+
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">Non-point finishers</h2>
+                <p class="lead">P11: Fernando Alonso</p>
+                <p class="lead">P12: Brendon Hartley</p>
+                <p class="lead">P13: Lance Stroll</p>
+                <p class="lead">P14: Stoffel Vandoorne</p>
+                <p class="lead">P15: Sergey Sirotkin</p>
+
+
+            </div>
+        </div>
+
+        <div class="col col-md-6">
+            <div class="jumbotron">
+                <h2 style="font-weight: bold;">DNF's</h2>
+                <p class="lead">P16: Pierre Gastly ENGINE</p>
+                <p class="lead">P17: Esteban Ocon ENGINE</p>
+                <p class="lead">P18: Marcus Ericsson ENGINE</p>
+                <p class="lead">P19: Kimi Raikönen MECHAINCAL</p>
+                <p class="lead">P20: Nico Hulkenberg COLLISION</p>
+
+            </div>
+        </div>
+    </div>
+</div>
