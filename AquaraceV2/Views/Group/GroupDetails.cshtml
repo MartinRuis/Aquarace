@@ -85,20 +85,12 @@
                 <h2 class="text-center">Add Player</h2>
                 <div class="row">
                     <div class="col-xs-12 col-md-10">
-                        <input id="listUsernames" placeholder="Usernames" />
+                        @using (Html.BeginForm("AddPlayerToGroup", "Group", FormMethod.Post))
+                        {
+                            <input id="listUsernames" name="username" placeholder="Usernames" />
+                            <button class="btn btn-success" type="submit">Add</button>
+                        }
                     </div>
-                    <div class="col-xs-12 col-md-2">
-                        @Html.ActionLink(
-                            "Add",
-                            "AddPlayerToGroup",
-                            "Group",
-                            new { id = Model.ID, username  = Username },
-                            new { @class = "btn btn-success addUserBtn"}
-                            )
-
-
-                    </div>
-
                 </div>
 
             </div>
@@ -128,14 +120,6 @@
                 }
             };
             $('#listUsernames').easyAutocomplete(autocompleteOptions);
-
-            $('.addUserBtn').on('click', function () {
-                alert("afd");
-                var name = document.getElementById('listUsernames').value;
-                @(Username) = name;
-
-            });
-
         </script>
 
         <div class="col col-md-6">
@@ -145,7 +129,7 @@
                 <p>Betting expires on 16-03-2019</p>
                 <p class="btn btn-success btn-lg">@Html.ActionLink("Place bet!", "", "", null, new { style = "color: #FFFFFF" })</p>
 
-</div>
+            </div>
         </div>
 
     </div>
