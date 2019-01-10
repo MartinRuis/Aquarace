@@ -83,7 +83,13 @@ namespace AquaraceV2.Controllers
             return completed ? RedirectToAction("GroupDetails", "Group", new{id = iD}) : RedirectToAction("ViewPublicGroups", "Group", new{message = "Something went wrong. Please try again later."});
         }
 
-
+        public ActionResult MakeGuess()
+        {
+            Team t1 = new Team(1,"wokkels");
+            Player p1 = new Player();
+            GuessedDriver GD = new GuessedDriver(1,"Wokkels",200000,t1,p1);
+            return View(GD);
+        }
 
         public ActionResult AddDriverToGroup()
         {
