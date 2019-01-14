@@ -42,187 +42,188 @@
             </div>
         </div>
         <div class="col col-md-4">
-            <div class="jumbotron" style="height: 650px;">
-                <h2>Select drivers (max x)</h2>
+            <div class="jumbotron" style="height: 900px; padding: 0px;">
+                <br/>
+                <h2>&nbsp; Select drivers (max x)</h2>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver1, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class="control-label col-md-2" style="display: inline-block; width: 100px;">HAM (2M)</label>
+                    
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver1)
                             @Html.ValidationMessageFor(model => model.Driver1, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver2, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block; width: 100px;">BOT (2M)</label>  
+                   
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver2)
                             @Html.ValidationMessageFor(model => model.Driver2, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver3, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class="control-label col-md-2" style="display: inline-block; width: 100px;">VET (2M)</label>
+                  
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver3)
                             @Html.ValidationMessageFor(model => model.Driver3, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                    
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver4, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class="control-label col-md-2" style="display: inline-block;width: 100px;">RAI (2M)</label>
+                  
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver4)
                             @Html.ValidationMessageFor(model => model.Driver4, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver5, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class="control-label col-md-2" style="display: inline-block;width: 100px;">VER (2M)</label>
+                   
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver5)
                             @Html.ValidationMessageFor(model => model.Driver5, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver6, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox" style="display: inline-block">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">RIC (2M)</label>  
+                   
+                        <div class="checkbox" style="display: inline-block;width: 100px;">
                             @Html.EditorFor(model => model.Driver6)
                             @Html.ValidationMessageFor(model => model.Driver6, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver7, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox" style="display: inline-block">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">PER (2M)</label>  
+                   
+                        <div class="checkbox" style="display: inline-block;width: 100px;">
                             @Html.EditorFor(model => model.Driver7)
                             @Html.ValidationMessageFor(model => model.Driver7, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                    
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver8, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox" style="display: inline-block">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">OCO (2M)</label>  
+                   
+                        <div class="checkbox" style="display: inline-block;width: 100px;">
                             @Html.EditorFor(model => model.Driver8)
                             @Html.ValidationMessageFor(model => model.Driver8, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver9, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox" style="display: inline-block">
+                    <label class="control-label col-md-2" style="display: inline-block;width: 100px;">STR (2M)</label>
+                   
+                        <div class="checkbox" style="display: inline-block;width: 100px;">
                             @Html.EditorFor(model => model.Driver9)
                             @Html.ValidationMessageFor(model => model.Driver9, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver10, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox" style="display: inline-block">
+                    <label class="control-label col-md-2" style="display: inline-block;width: 100px;">SIR (2M)</label>
+                  
+                        <div class="checkbox" style="display: inline-block;width: 100px;">
                             @Html.EditorFor(model => model.Driver10)
                             @Html.ValidationMessageFor(model => model.Driver10, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                  
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver11, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox" style="display: inline-block">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">HUL (2M)</label>  
+                   
+                        <div class="checkbox" style="display: inline-block;width: 100px;">
                             @Html.EditorFor(model => model.Driver11)
                             @Html.ValidationMessageFor(model => model.Driver11, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver12, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox" style="display: inline-block">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">SAI (2M)</label>  
+                    
+                        <div class="checkbox" style="display: inline-block;width: 100px;">
                             @Html.EditorFor(model => model.Driver12)
                             @Html.ValidationMessageFor(model => model.Driver12, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                  
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver13, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">GAS (2M)</label>  
+                  
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver13)
                             @Html.ValidationMessageFor(model => model.Driver13, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                 
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver14, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">HAR (2M)</label>  
+                  
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver14)
                             @Html.ValidationMessageFor(model => model.Driver14, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver15, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">GRO (2M)</label>  
+                  
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver15)
                             @Html.ValidationMessageFor(model => model.Driver15, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                  
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver16, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">MAG (2M)</label>  
+                   
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver16)
                             @Html.ValidationMessageFor(model => model.Driver16, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver17, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">VAN (2M)</label>  
+                    
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver17)
                             @Html.ValidationMessageFor(model => model.Driver17, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver18, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">ALO (2M)</label>  
+                    
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver18)
                             @Html.ValidationMessageFor(model => model.Driver18, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver19, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">ERI (2M)</label>  
+                   
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver19)
                             @Html.ValidationMessageFor(model => model.Driver19, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Driver20, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <label class = "control-label col-md-2" style="display: inline-block;width: 100px;">LEC (2M)</label>  
+                  
                         <div class="checkbox" style="display: inline-block">
                             @Html.EditorFor(model => model.Driver20)
                             @Html.ValidationMessageFor(model => model.Driver20, "", new { @class = "text-danger" })
                         </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
