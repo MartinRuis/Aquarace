@@ -85,10 +85,9 @@ namespace AquaraceV2.Controllers
 
         public ActionResult MakeGuess()
         {
-            Team t1 = new Team(1,"wokkels");
-            Player p1 = new Player();
-            GuessedDriver GD = new GuessedDriver(1,"Wokkels",200000,t1,p1);
-            return View(GD);
+            DriverGuess D1 = new DriverGuess();
+            D1.Cash = 40000000;
+            return View(D1);
         }
 
         public ActionResult AddDriverToGroup()
