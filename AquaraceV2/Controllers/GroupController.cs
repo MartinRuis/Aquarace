@@ -86,7 +86,7 @@ namespace AquaraceV2.Controllers
         public ActionResult MakeGuess()
         {
             DriverGuess D1 = new DriverGuess();
-            D1.Cash = 40000000;
+            D1.Cash = 0;
             return View(D1);
         }
 
