@@ -26,6 +26,7 @@ namespace AquaraceV2.Controllers
             if (playerlogic.validatePlayerModel(PlayerModel))
             {
                 Session["UserName"] = PlayerModel.UserName;
+                Session["MadeGuess"] = 0;
                 //id moet ergensanders?
                 return RedirectToAction("Index", "Home");
             }

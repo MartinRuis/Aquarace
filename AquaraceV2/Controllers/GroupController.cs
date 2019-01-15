@@ -45,6 +45,7 @@ namespace AquaraceV2.Controllers
         {
             if (Session["Username"] != null)
             {
+                Session["currentGroupID"] = id;
                 PlayerLogic playerLogic = new PlayerLogic();
                 var listUsernames = playerLogic.GetAddPlayerName(id);
                 ViewBag.Usernames = listUsernames; 
@@ -57,21 +58,44 @@ namespace AquaraceV2.Controllers
         public ActionResult AddPlayerToGroup(int? id, string username)
         {
             bool completed = false;
+            int iD = 0;
+
+            if (id == null)
+            {
+                iD = (int) Session["currentGroupID"];
+            }
+            else
+            {
+                iD = (int)id;
+            }
+
 
             if(String.IsNullOrEmpty(username))
             {
-                completed = groupLogic.AddPlayerToGroup((int)id, Session["Username"].ToString());
+                completed = groupLogic.AddPlayerToGroup(iD, Session["Username"].ToString());
                 
             }
             else
             {
-                completed = groupLogic.AddPlayerToGroup((int)id, username);
+                completed = groupLogic.AddPlayerToGroup(iD, username);
             }
 
-            return completed ? RedirectToAction("GroupDetails", "Group", new{id = id}) : RedirectToAction("ViewPublicGroups", "Group", new{message = "Something went wrong. Please try again later."});
+            return completed ? RedirectToAction("GroupDetails", "Group", new{id = iD}) : RedirectToAction("ViewPublicGroups", "Group", new{message = "Something went wrong. Please try again later."});
         }
 
+        public ActionResult MakeGuess()
+        {
+            DriverGuess D1 = new DriverGuess();
+            D1.Cash = 40000000;
+            return View(D1);
+        }
 
+        [HttpPost]
+        public ActionResult MakeGuess(DriverGuess D1)
+        {
+            Session["MadeGuess"] = 1;
+            return RedirectToAction("Index", "Home");
+        }
 
         public ActionResult AddDriverToGroup()
         {

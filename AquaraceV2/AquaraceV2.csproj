@@ -205,6 +205,8 @@
     <Content Include="Views\Group\GroupDetails.cshtml" />
     <Content Include="Views\Group\ViewPublicGroups.cshtml" />
     <Content Include="Views\Calendar\Calendar.cshtml" />
+    <Content Include="Views\Calendar\ViewRace.cshtml" />
+    <Content Include="Views\Group\MakeGuess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

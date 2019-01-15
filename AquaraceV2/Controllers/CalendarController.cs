@@ -20,5 +20,10 @@ namespace AquaraceV2.Controllers
             return RedirectToAction("Login", "Player");
             
         }
+
+        public ActionResult ViewRace()
+        {
+            return View();
+        }
     }
 }
