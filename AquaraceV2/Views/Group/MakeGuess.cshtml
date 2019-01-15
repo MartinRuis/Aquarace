@@ -36,7 +36,7 @@
 
                     <p id ="Cash" style="display: inline-block">0</p>
                     <p style="display: inline-block"> / </p>
-                    <p style="display: inline-block"> 40000000</p>
+                    <p style="display: inline-block"> 20000000</p>
 
                     
                 </div>
@@ -265,7 +265,7 @@
                         
                             <h1 align="center">Commit guess</h1>
                             <div align="center">
-                                <input type="submit" value="Make guess!" class="btn btn-success btn-lg"  />
+                                <input id="MakeGuessButton" type="submit" value="Make guess!" class="btn btn-success btn-lg"  />
                             </div>
                        
                     </div>
@@ -294,21 +294,35 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 7000000 });
+           
+           if (parseInt(($('#Cash').text())) > 20000000) {
+               $('#MakeGuessButton').attr("disabled", true);
+           } 
            $('#Driver2').attr("disabled", true);
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 7000000 });
            $('#Driver2').removeAttr("disabled");
+           if (parseInt(($('#Cash').text())) < 20000000) {
+               $('#MakeGuessButton').removeAttr("disabled");
+           }
        }
     });
    $("#Driver2").click(function () {
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
+           if (parseInt(($('#Cash').text())) > 20000000)
+           {
+               $('#MakeGuessButton').attr("disabled", true);
+           } 
            $('#Driver1').attr("disabled", true);
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
+           if (parseInt(($('#Cash').text())) < 20000000) {
+               $('#MakeGuessButton').removeAttr("disabled");
+           }
            $('#Driver1').removeAttr("disabled");
        }
     });
@@ -316,10 +330,17 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 7000000 });
+           if (parseInt(($('#Cash').text())) > 20000000)
+           {
+               $('#MakeGuessButton').attr("disabled", true);
+           } 
            $('#Driver4').attr("disabled", true);
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 7000000 });
+           if (parseInt(($('#Cash').text())) < 20000000) {
+               $('#MakeGuessButton').removeAttr("disabled");
+           }
            $('#Driver4').removeAttr("disabled");
        }
     });
@@ -327,10 +348,17 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
+           if (parseInt(($('#Cash').text())) > 20000000)
+           {
+               $('#MakeGuessButton').attr("disabled", true);
+           } 
            $('#Driver3').attr("disabled", true);
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
+           if (parseInt(($('#Cash').text())) < 20000000) {
+               $('#MakeGuessButton').removeAttr("disabled");
+           }
            $('#Driver3').removeAttr("disabled");
        }
     });
@@ -338,10 +366,17 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
+           if (parseInt(($('#Cash').text())) > 20000000)
+           {
+               $('#MakeGuessButton').attr("disabled", true);
+           } 
            $('#Driver6').attr("disabled", true);
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
+           if (parseInt(($('#Cash').text())) < 20000000) {
+               $('#MakeGuessButton').removeAttr("disabled");
+           }
            $('#Driver6').removeAttr("disabled");
        }
     });
@@ -349,10 +384,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver5').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver5').removeAttr("disabled");
         }
     });
@@ -360,10 +403,17 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
+           if (parseInt(($('#Cash').text())) > 20000000)
+           {
+               $('#MakeGuessButton').attr("disabled", true);
+           } 
            $('#Driver8').attr("disabled", true);
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
+           if (parseInt(($('#Cash').text())) < 20000000) {
+               $('#MakeGuessButton').removeAttr("disabled");
+           }
            $('#Driver8').removeAttr("disabled");
        }
     });
@@ -371,10 +421,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver7').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver7').removeAttr("disabled");
         }
     });
@@ -382,10 +440,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver10').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver10').removeAttr("disabled");
         }
     });
@@ -393,10 +459,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver9').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver9').removeAttr("disabled");
         }
     });
@@ -404,10 +478,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 4000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver12').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 4000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver12').removeAttr("disabled");
         }
     });
@@ -415,10 +497,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver11').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver11').removeAttr("disabled");
         }
     });
@@ -426,10 +516,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver14').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver14').removeAttr("disabled");
         }
     });
@@ -437,10 +535,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver13').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver13').removeAttr("disabled");
         }
     });
@@ -448,10 +554,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver16').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver16').removeAttr("disabled");
         }
     });
@@ -459,10 +573,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver15').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver15').removeAttr("disabled");
         }
     });
@@ -470,10 +592,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver18').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver18').removeAttr("disabled");
         }
     });
@@ -481,10 +611,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 4000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver17').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 4000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver17').removeAttr("disabled");
         }
     });
@@ -492,10 +630,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver20').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver20').removeAttr("disabled");
         }
     });
@@ -503,10 +649,18 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
+            if (parseInt(($('#Cash').text())) > 20000000)
+            {
+                $('#MakeGuessButton').attr("disabled", true);
+            } 
             $('#Driver19').attr("disabled", true);
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
+            if (parseInt(($('#Cash').text())) < 20000000)
+            {
+                $('#MakeGuessButton').removeAttr("disabled");
+            }
             $('#Driver19').removeAttr("disabled");
         }
     });
