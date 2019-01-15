@@ -90,6 +90,13 @@ namespace AquaraceV2.Controllers
             return View(D1);
         }
 
+        [HttpPost]
+        public ActionResult MakeGuess(DriverGuess D1)
+        {
+            Session["MadeGuess"] = 1;
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult AddDriverToGroup()
         {
             //int groupid = 0;

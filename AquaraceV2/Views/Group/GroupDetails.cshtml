@@ -127,7 +127,18 @@
                 <h2>Place bet</h2>
                 <p>Next race: Austria</p>
                 <p>Betting expires on 16-03-2019</p>
-                <p class="btn btn-success btn-lg">@Html.ActionLink("Place bet!", "MakeGuess", "Group", null, new { style = "color: #FFFFFF" })</p>
+
+                @if (@HttpContext.Current.Session["MadeGuess"].ToString() != "0")
+                {
+                    <p class="btn btn-danger btn-lg">@Html.ActionLink("Alter bet!", "MakeGuess", "Group", null, new { style = "color: #FFFFFF" })</p>
+                    <p>Making a new bet will overwrite the current one!</p>
+                }
+                else
+                {
+                    <p class="btn btn-success btn-lg">@Html.ActionLink("Place bet!", "MakeGuess", "Group", null, new { style = "color: #FFFFFF" })</p>
+
+                }
+
 
             </div>
         </div>
