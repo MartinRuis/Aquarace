@@ -32,10 +32,11 @@
         <div class="row">
             <div class="col col-md-4">
                 <div class="jumbotron" style="height: 200px;">
-                    <h2>Cash left</h2>
+                    <h2>Cash spent</h2>
 
-                    <p id ="Cash">@Model.Cash / 40000000</p>
-                        <p>wokkels zijn lekker</p>
+                    <p id ="Cash" style="display: inline-block">0</p>
+                    <p style="display: inline-block"> / </p>
+                    <p style="display: inline-block"> 40000000</p>
 
                     
                 </div>
@@ -261,10 +262,12 @@
             <div class="col col-md-12">
                 <div class="jumbotron" style="height: 200px;">
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <h2>Commit guess</h2>
-                            <input type="submit" value="Make guess!" class="btn btn-default" />
-                        </div>
+                        
+                            <h1 align="center">Commit guess</h1>
+                            <div align="center">
+                                <input type="submit" value="Make guess!" class="btn btn-success btn-lg"  />
+                            </div>
+                       
                     </div>
                 </div>
             </div>
@@ -275,13 +278,70 @@
 
 }
 <script>
-    $("#Driver1").click(function () {
-        console.log("wokkels zijn lekker");
+    
+
+   /* $("#Driver1").click(function () {
+
         if ($(this).prop("checked")) {
-            $("#Cash").val("jQuery");
+            $("#Cash").val($("#Cash").val() + 200);
         }
         else {
-            $("#Cash").val("Angular");
+            $("#Cash").val($("#Cash").val() - 200);
         }
+    });*/
+
+   $("#Driver1").click(function () {
+        
+       if ($(this).prop("checked")) {
+           $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+       }
+       else {
+           $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+       }
     });
+   $("#Driver2").click(function () {
+        
+       if ($(this).prop("checked")) {
+           $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+       }
+       else {
+           $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+       }
+    });
+   $("#Driver3").click(function () {
+        
+       if ($(this).prop("checked")) {
+           $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+       }
+       else {
+           $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+       }
+    });
+   $("#Driver4").click(function () {
+        
+       if ($(this).prop("checked")) {
+           $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+       }
+       else {
+           $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+       }
+    });
+   $("#Driver5").click(function () {
+        
+       if ($(this).prop("checked")) {
+           $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+       }
+       else {
+           $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+       }
+    });
+   $("#Driver6").click(function () {
+        
+       if ($(this).prop("checked")) {
+           $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
+       }
+       else {
+           $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
+       }
+   });
 </script>
