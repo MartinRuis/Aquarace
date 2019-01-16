@@ -31,14 +31,19 @@
     <div class="container">
         <div class="row">
             <div class="col col-md-4">
-                <div class="jumbotron" style="height: 200px;">
+                <div class="jumbotron" style="height: 250px;">
                     <h2>Cash spent</h2>
 
-                    <p id ="Cash" style="display: inline-block">0</p>
+                    <p id="Cash" style="display: inline-block">0</p>
                     <p style="display: inline-block"> / </p>
                     <p style="display: inline-block"> 20000000</p>
 
-                    
+                    <h2>Drivers selected</h2>
+                    <p id="Drivers"style="display: inline-block">0</p>
+                    <p style="display: inline-block"> / </p>
+                    <p style="display: inline-block"> 5</p>
+
+
                 </div>
             </div>
             <div class="col col-md-4">
@@ -289,21 +294,22 @@
             $("#Cash").val($("#Cash").val() - 200);
         }
     });*/
-
+    
    $("#Driver1").click(function () {
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 7000000 });
-           
-           if (parseInt(($('#Cash').text())) > 20000000) {
+           $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+           if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5) {
                $('#MakeGuessButton').attr("disabled", true);
            } 
            $('#Driver2').attr("disabled", true);
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 7000000 });
+           $('#Drivers').html(function (i, val) { return val * 1 - 1 });
            $('#Driver2').removeAttr("disabled");
-           if (parseInt(($('#Cash').text())) < 20000000) {
+           if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) {
                $('#MakeGuessButton').removeAttr("disabled");
            }
        }
@@ -312,7 +318,8 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
-           if (parseInt(($('#Cash').text())) > 20000000)
+           $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+           if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
            {
                $('#MakeGuessButton').attr("disabled", true);
            } 
@@ -320,7 +327,8 @@
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
-           if (parseInt(($('#Cash').text())) < 20000000) {
+           $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+           if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) {
                $('#MakeGuessButton').removeAttr("disabled");
            }
            $('#Driver1').removeAttr("disabled");
@@ -330,7 +338,8 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 7000000 });
-           if (parseInt(($('#Cash').text())) > 20000000)
+           $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+           if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
            {
                $('#MakeGuessButton').attr("disabled", true);
            } 
@@ -338,7 +347,8 @@
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 7000000 });
-           if (parseInt(($('#Cash').text())) < 20000000) {
+           $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+           if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) {
                $('#MakeGuessButton').removeAttr("disabled");
            }
            $('#Driver4').removeAttr("disabled");
@@ -348,7 +358,8 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
-           if (parseInt(($('#Cash').text())) > 20000000)
+           $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+           if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
            {
                $('#MakeGuessButton').attr("disabled", true);
            } 
@@ -356,7 +367,8 @@
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
-           if (parseInt(($('#Cash').text())) < 20000000) {
+           $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+           if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) {
                $('#MakeGuessButton').removeAttr("disabled");
            }
            $('#Driver3').removeAttr("disabled");
@@ -366,7 +378,8 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
-           if (parseInt(($('#Cash').text())) > 20000000)
+           $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+           if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
            {
                $('#MakeGuessButton').attr("disabled", true);
            } 
@@ -374,7 +387,8 @@
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
-           if (parseInt(($('#Cash').text())) < 20000000) {
+           $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+           if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) {
                $('#MakeGuessButton').removeAttr("disabled");
            }
            $('#Driver6').removeAttr("disabled");
@@ -384,7 +398,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 6000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -392,7 +407,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 6000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -403,7 +419,8 @@
         
        if ($(this).prop("checked")) {
            $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
-           if (parseInt(($('#Cash').text())) > 20000000)
+           $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+           if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
            {
                $('#MakeGuessButton').attr("disabled", true);
            } 
@@ -411,7 +428,8 @@
        }
        else {
            $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
-           if (parseInt(($('#Cash').text())) < 20000000) {
+           $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+           if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) {
                $('#MakeGuessButton').removeAttr("disabled");
            }
            $('#Driver8').removeAttr("disabled");
@@ -421,7 +439,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -429,7 +448,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -440,7 +460,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -448,7 +469,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -459,7 +481,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -467,7 +490,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -478,7 +502,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 4000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -486,7 +511,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 4000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -497,7 +523,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -505,7 +532,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -516,7 +544,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -524,7 +553,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -535,7 +565,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -543,7 +574,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -554,7 +586,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 2000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -562,7 +595,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 2000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -573,7 +607,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -581,7 +616,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -592,7 +628,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 3000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -600,7 +637,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 3000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -611,7 +649,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 4000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -619,7 +658,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 4000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -630,7 +670,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -638,7 +679,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
@@ -649,7 +691,8 @@
 
         if ($(this).prop("checked")) {
             $('#Cash').html(function (i, val) { return val * 1 + 1000000 });
-            if (parseInt(($('#Cash').text())) > 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 + 1 });
+            if (parseInt(($('#Cash').text())) > 20000000 || parseInt(($('#Drivers').text())) > 5)
             {
                 $('#MakeGuessButton').attr("disabled", true);
             } 
@@ -657,7 +700,8 @@
         }
         else {
             $('#Cash').html(function (i, val) { return val * 1 - 1000000 });
-            if (parseInt(($('#Cash').text())) < 20000000)
+            $('#Drivers').html(function (i, val) { return val * 1 - 1 });
+            if (parseInt(($('#Cash').text())) < 20000000 && parseInt(($('#Drivers').text())) <= 5) 
             {
                 $('#MakeGuessButton').removeAttr("disabled");
             }
