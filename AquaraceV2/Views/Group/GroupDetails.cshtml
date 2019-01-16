@@ -60,7 +60,7 @@
                             @{ int playercount = 1;}
                             @foreach (Player player in Model.GetPlayers())
                             {
-                                <li class="list-group-item">Player @playercount: @player.UserName</li>
+                                <li class="list-group-item">Player @playercount: @player.UserName (0 points)</li>
                                 playercount++;
                             }
                             @for (int i = Model.GetPlayers().Count; i <= Model.GetMaxPlayers() - 1; i++)
